@@ -1,0 +1,141 @@
+<!-- my.wxml -->
+<view class="container">
+  <!-- 顶部背景 -->
+  <view class="top-bg"></view>
+  
+  <!-- 用户信息展示区域 -->
+  <view class="user-card" wx:if="{{hasLogin}}">
+    <view class="user-info">
+      <view class="avatar-container">
+        <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" />
+        <view class="avatar-border"></view>
+      </view>
+      <view class="info">
+        <text class="user-name">{{userInfo.nickName || '同学'}}</text>
+        <text class="stu-id">学号: {{stuId}}</text>
+      </view>
+    </view>
+    <view class="card-decoration"></view>
+  </view>
+
+  <!-- 优化后的登录表单 -->
+<view class="login-card" wx:if="{{!hasLogin}}">
+  <view class="card-title">用户登录</view>
+  <view class="login-form">
+    <!-- 学号输入框 -->
+    <view class="input-container">
+      <text class="input-label">学号</text>
+      <view class="input-wrapper">
+        <text class="iconfont icon-user">👤</text>
+        <input 
+          class="input" 
+          type="text" 
+          placeholder="请输入您的学号" 
+          placeholder-class="placeholder"
+          value="{{stuId}}" 
+          bindinput="setStuId"
+          bindfocus="onInputFocus"
+          bindblur="onInputBlur"
+        />
+      </view>
+      <text class="error-msg" wx:if="{{stuIdError}}">{{stuIdError}}</text>
+    </view>
+    
+    <!-- 密码输入框 -->
+    <!-- 密码输入框部分 -->
+<view class="input-container">
+  <text class="input-label">密码</text>
+  <view class="input-wrapper">
+    <text class="iconfont icon-lock">🔒</text>
+    <input 
+      class="input" 
+      type="text"
+      placeholder="请输入您的密码" 
+      placeholder-class="placeholder"
+      value="{{displayPassword}}" 
+      bindinput="setPwd"
+      bindfocus="onInputFocus"
+      bindblur="onInputBlur"
+      data-type="password"
+      focus="{{pwdFocus}}"
+      adjust-position="{{false}}"
+    />
+    <text class="toggle-password" bindtap="togglePasswordShow">
+      <text class="iconfont" wx:if="{{showPassword}}">👁️</text>
+      <text class="iconfont" wx:else>👁️‍🗨️</text>
+    </text>
+  </view>
+  <text class="error-msg" wx:if="{{pwdError}}">{{pwdError}}</text>
+</view>
+    
+    <button class="login-btn" bindtap="validateAndSave" hover-class="btn-hover">登录</button>
+    
+    <view class="login-tips">
+      <text>登录即表示同意</text>
+      <navigator url="/pages/my/agreement/agreement" class="agreement-link" open-type="navigate">《用户协议》</navigator>
+    </view>
+  </view>
+</view>
+
+  <!-- 功能菜单区域 -->
+  <view class="menu-card">
+    <view class="card-title">功能菜单</view>
+    <view class="menu-list">
+      <!-- 个人资料入口 -->
+      <view class="menu-item" bindtap="goMyDetail" wx:if="{{hasLogin}}">
+        <view class="menu-left">
+          <text class="iconfont icon-profile">👕</text>
+          <text>修改个人资料</text>
+        </view>
+        <text class="iconfont arrow"></text>
+      </view>
+      
+      <!-- 我的发布 -->
+      <view class="menu-item" bindtap="goMyPublish" wx:if="{{hasLogin}}">
+        <view class="menu-left">
+          <text class="iconfont icon-publish">🏪</text>
+          <text>我发布的商品</text>
+        </view>
+        <text class="iconfont arrow"></text>
+      </view>
+
+      <view class="menu-item" bindtap="seeMyPosts" wx:if="{{hasLogin}}">
+        <view class="menu-left">
+          <text class="iconfont icon-post">📮</text>
+          <text>我的帖子</text>
+        </view>
+        <text class="iconfont arrow"></text>
+      </view>
+
+      <!-- 联系我们 -->
+      <view class="menu-item" bindtap="goContact" wx:if="{{hasLogin}}">
+        <view class="menu-left">
+          <text class="iconfont icon-contact">📞</text>
+          <text>联系我们</text>
+        </view>
+        <text class="iconfont arrow"></text>
+      </view>
+
+      <!-- 用户协议 -->
+      <view class="menu-item" bindtap="goAgreement" wx:if="{{hasLogin}}">
+        <view class="menu-left">
+          <text class="iconfont icon-agreement">📄</text>
+          <text>用户协议</text>
+        </view>
+        <text class="iconfont arrow"></text>
+      </view>
+
+      <!-- 退出登录按钮 -->
+      <view class="menu-item logout-btn" wx:if="{{hasLogin}}" bindtap="logout">
+        <view class="menu-left">
+          <text class="iconfont icon-logout"></text>
+          <text>退出登录</text>
+        </view>
+        <text class="iconfont arrow"></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="bottom-decoration"></view>
+</view>

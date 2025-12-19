@@ -1,0 +1,281 @@
+/* pages/secondhand/detail.wxss */
+page {
+  background-color: #f7f8fa;
+}
+
+.container {
+  padding-bottom: 120rpx; /* 给底部按钮留空间 */
+}
+
+/* ============= 图片轮播 ============= */
+.image-swiper {
+  height: 600rpx;
+  width: 100%;
+  border-radius: 0 0 30rpx 30rpx;
+  overflow: hidden;
+  box-shadow: 0 10rpx 30rpx rgba(0,0,0,0.1);
+}
+
+.swiper-image {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============= 商品卡片 ============= */
+.goods-card {
+  background: #fff;
+  padding: 36rpx;
+  margin: -40rpx 30rpx 30rpx;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 30rpx rgba(0,0,0,0.06);
+}
+
+.goods-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+.goods-price {
+  font-size: 44rpx;
+  color: #ff4d4f;
+  font-weight: bold;
+  margin: 20rpx 0;
+  text-shadow: 0 2rpx 4rpx rgba(230, 67, 64, 0.2);
+}
+
+/* ============= 发布者信息 ============= */
+.publisher-info {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 0;
+}
+
+.publisher-details {
+  margin-left: 16rpx;
+}
+
+.publish-time {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 4rpx;
+}
+
+.publisher-info {
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.avatar {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+  border: 2rpx solid #f0f0f0;
+}
+
+.nickname {
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.publish-time {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.nickname {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* ============= 通用区块样式 ============= */
+.section {
+  background: #fff;
+  margin: 20rpx 30rpx;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.03);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  padding-left: 12rpx;
+  border-left: 6rpx solid #1677ff;
+}
+
+/* ============= 描述 & 地点文本 ============= */
+.description,
+.location {
+  font-size: 28rpx;
+  color: #555;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+/* ============= 联系方式项 ============= */
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-label-value {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-label {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.contact-value {
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 4rpx;
+}
+
+/* ============= 按钮样式 ============= */
+.mini-btn {
+  padding: 8rpx 20rpx;
+  font-size: 24rpx;
+  line-height: 1;
+  height: auto;
+}
+
+.show-qr-btn {
+  padding: 16rpx 30rpx;
+  font-size: 28rpx;
+}
+
+.copy-btn {
+  background-color: #f0f0f0;
+  color: #666;
+  border-radius: 12rpx;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  color: white;
+  border: none;
+}
+
+.large-btn {
+  padding: 24rpx 0;
+  font-size: 32rpx;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+}
+
+/* ============= 底部操作栏 ============= */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 30rpx;
+  background: #fff;
+  border-top: 1rpx solid #eee;
+  box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.05);
+}
+
+.want-btn {
+  width: 100%;
+  border-radius: 50rpx;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  box-shadow: 0 10rpx 24rpx rgba(238, 90, 82, 0.3);
+  transition: all 0.3s ease;
+}
+
+.want-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 6rpx 16rpx rgba(238, 90, 82, 0.25);
+}
+
+/* ============= 弹窗样式 ============= */
+.popup-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: #fff;
+  width: 90%;
+  max-width: 500rpx;
+  border-radius: 24rpx;
+  padding: 40rpx 30rpx;
+  text-align: center;
+  animation: popupIn 0.3s ease-out;
+}
+
+@keyframes popupIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.popup-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.close-btn {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  font-size: 36rpx;
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0;
+  background: transparent;
+  color: #aaa;
+}
+
+.popup-qr-image {
+  width: 360rpx;
+  height: 360rpx;
+  margin: 20rpx auto;
+  border-radius: 12rpx;
+  background: #f9f9f9;
+  padding: 20rpx;
+}
+
+.popup-tip {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 20rpx;
+  display: block;
+}

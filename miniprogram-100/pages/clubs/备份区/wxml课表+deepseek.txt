@@ -1,0 +1,81 @@
+<view class="container">
+  <!-- 顶部周选择器 -->
+  <view class="week-selector">
+    <text wx:for="{{weeks}}" wx:key="index" 
+          class="week-item {{currentWeek === index ? 'active' : ''}}"
+          bindtap="switchWeek" data-week="{{index}}">
+      第{{item}}周
+    </text>
+  </view>
+
+  <!-- 课程表 -->
+  <view class="schedule-container" wx:if="{{!isEmpty}}">
+    <!-- 表头 -->
+    <view class="schedule-header">
+      <view class="time-header">时间/日期</view>
+      <view wx:for="{{weekDays}}" wx:key="index" class="day-header">
+        {{item}}
+      </view>
+    </view>
+
+    <!-- 课程内容 -->
+    <view class="schedule-body">
+      <!-- 时间轴 -->
+      <view class="time-column">
+        <view wx:for="{{classTimes}}" wx:key="index" class="time-slot">
+          {{item}}
+        </view>
+      </view>
+
+      <!-- 课程表格 -->
+      <view class="classes-column">
+        <view wx:for="{{scheduleData}}" wx:for-item="day" wx:for-index="dayIndex" wx:key="dayIndex" class="day-column">
+          <view wx:for="{{day.classes}}" wx:for-item="class" wx:for-index="timeIndex" wx:key="timeIndex" 
+                class="class-slot {{class.course ? 'has-class' : ''}}"
+                data-day="{{dayIndex}}" data-time="{{timeIndex}}" bindtap="showClassDetail">
+            <text class="course-name" wx:if="{{class.course}}">{{class.course}}</text>
+            <text class="class-room" wx:if="{{class.course}}">{{class.room}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态提示 -->
+  <view wx:if="{{isEmpty}}" class="empty-tip">
+    <image src="/images/empty.png" class="empty-img"></image>
+    <text>当前学期暂无排课</text>
+  </view>
+
+  <!-- 课程详情弹窗 -->
+  <view class="modal" wx:if="{{showModal}}" catchtap="hideModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text>课程详情</text>
+        <text class="close-btn" catchtap="hideModal">×</text>
+      </view>
+      <view class="modal-body">
+        <view class="detail-item">
+          <text class="label">课程名称：</text>
+          <text class="value">{{currentClass.course}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">教师：</text>
+          <text class="value">{{currentClass.teacher}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">教室：</text>
+          <text class="value">{{currentClass.room}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">周次：</text>
+          <text class="value">{{currentClass.weeks}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">时间：</text>
+          <text class="value">{{currentClass.time}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

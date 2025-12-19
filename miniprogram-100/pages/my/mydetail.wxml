@@ -1,0 +1,65 @@
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="title">修改个人信息</text>
+  </view>
+
+  <!-- 头像区域 -->
+  <view class="avatar-section">
+    <text class="section-label">头像</text>
+    <view class="avatar-container">
+      <image class="avatar-preview" src="{{avatarUrl || '/images/default-avatar.png'}}" />
+      <button class="avatar-btn" bindtap="chooseAvatar">选择头像</button>
+    </view>
+  </view>
+  
+   <!-- 当前信息预览 -->
+  <view class="preview-section">
+    <text class="preview-title">预览效果</text>
+    <view class="preview-content">
+      <image class="preview-avatar" src="{{avatarUrl || '/images/default-avatar.png'}}" />
+      <text class="preview-nickname">{{nickName || '未设置昵称'}}</text>
+      <text class="preview-signature">{{signature || '未设置个性签名'}}</text>
+    </view>
+  </view>
+
+  <!-- 昵称输入区域 -->
+  <view class="nickname-section">
+    <text class="section-label">昵称</text>
+    <view class="input-container">
+      <input 
+        class="nickname-input" 
+        placeholder="请输入昵称" 
+        placeholder-class="placeholder"
+        bindinput="setNickName" 
+        value="{{nickName}}" 
+        maxlength="20"
+      />
+      <text class="char-count">{{nickName.length}}/20</text>
+    </view>
+  </view>
+
+  <!-- 个性签名输入区域 -->
+  <view class="signature-section">
+    <text class="section-label">个性签名</text>
+    <view class="input-container">
+      <input 
+        class="signature-input" 
+        placeholder="请输入个性签名" 
+        placeholder-class="placeholder"
+        bindinput="setSignature" 
+        value="{{signature}}" 
+        maxlength="50"
+      />
+      <text class="char-count">{{signature.length}}/50</text>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <button class="confirm-btn" bindtap="confirmChange">保存更改</button>
+
+  </view>
+
+ 
+</view>

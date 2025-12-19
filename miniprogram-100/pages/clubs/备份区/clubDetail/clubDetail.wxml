@@ -1,0 +1,22 @@
+<view class="club-detail-container" wx:if="{{club}}">
+  <view class="club-header">
+    <text class="club-title">{{club.name}}</text>
+    <text class="club-subtitle">社团二维码</text>
+  </view>
+
+  <view class="qr-code-section">
+    <image 
+      class="qr-code-image" 
+      src="{{club.qrCode}}" 
+      mode="widthFix" 
+      bindtap="previewQRCode"
+      bindlongpress="handleLongPress"
+    />
+    <text class="qr-code-tip">点击预览二维码</text>
+
+  </view>
+
+  <view class="action-buttons">
+    <button class="back-btn" bindtap="goBack">返回社团列表</button>
+  </view>
+</view>

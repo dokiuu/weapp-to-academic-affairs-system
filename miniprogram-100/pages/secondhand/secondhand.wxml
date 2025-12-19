@@ -1,0 +1,165 @@
+<!-- 二手市场首页 - 商品列表 -->
+<view class="container">
+  <!-- 标题栏 -->
+  <view class="header">
+    <view class="welcome-section">
+      <image class="welcome-bg" src="/image/forum-bg.png" mode="aspectFill"></image>
+      <view class="welcome-content">
+        <text class="welcome-title">校园二手市场</text>
+        <text class="welcome-subtitle">优质闲置，轻松交易</text>
+      </view>
+    </view>
+
+    
+
+    <button class="publish-btn" bindtap="goPublish">
+      <text class="btn-text">发个二手</text>
+    </button>
+  </view>
+
+  <scroll-view
+  scroll-y
+  class="list"
+  refresher-enabled
+  refresher-triggered="{{triggered}}"
+  bindrefresherrefresh="onRefresh"
+  bindscrolltolower="loadMore"
+  style="height: 100vh;"
+  >
+  <!-- 轮播图区域 -->
+  <view class="banner-section">
+    <swiper class="banner-swiper" 
+            indicator-dots="{{false}}" 
+            autoplay="{{true}}" 
+            interval="5000" 
+            circular="{{true}}"
+            current="{{currentBanner}}" 
+            bindchange="onBannerChange">
+      <block wx:for="{{banners}}" wx:key="_id">
+        <swiper-item>
+          <view class="banner-item" data-item="{{item}}" bindtap="onBannerTap">
+            <image class="banner-image" src="{{item.imageUrl}}" mode="aspectFit"></image>
+            <view class="banner-content">
+              <text class="banner-title">{{item.title}}</text>
+              <text class="banner-desc" wx:if="{{item.description}}">{{item.description}}</text>
+            </view>
+            <!-- 编辑按钮（任何人都可以点击） -->
+            <!-- <view class="banner-edit-btn" data-index="{{index}}" bindtap="onEditBanner">
+              <image class="edit-icon" src="/images/edit.png"></image>
+            </view> -->
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    
+    <!-- 轮播图指示器 -->
+    <view class="banner-indicator">
+      <view wx:for="{{banners}}" wx:key="index" 
+            class="banner-dot {{index === currentBanner ? 'active' : ''}}"></view>
+    </view>
+    
+    <!-- 快捷管理按钮 -->
+    <!-- <view class="quick-manage-btn" bindtap="onQuickManage">
+      <image class="manage-icon" src="/images/settings.png"></image>
+      <text>管理轮播图</text>
+    </view> -->
+  </view>
+  <!-- 商品列表 - 瀑布流布局 -->
+  <view class="waterfall-container">
+    <!-- 左列 -->
+    <view class="waterfall-column">
+      <block wx:for="{{leftColumnGoods}}" wx:key="_id">
+        <view class="goods-card" bindtap="goDetail" data-id="{{item._id}}">
+          <!-- 商品图片 -->
+          <view class="image-wrapper">
+            <image 
+              class="goods-image" 
+              src="{{item.images && item.images.length > 0 ? item.images[0] : '/images/placeholder.png'}}"
+              mode="aspectFill"
+            />
+            <view class="price-tag">¥{{item.price}}</view>
+            
+            <view class="image-overlay"></view>
+          </view>
+
+          <!-- 商品信息区 -->
+          <view class="info-section">
+            <!-- 商品标题 -->
+            <view class="goods-title">{{item.title}}</view>
+            <view class="goods-time">{{item.formattedTime}}</view>
+
+            <!-- 辅助信息：地点 + 时间 -->
+            <view class="meta-row">
+              <text class="location">📍 {{item.location}}</text>
+              <text class="time">{{formatTime(item.createTime)}}</text>
+            </view>
+
+            <!-- 发布者信息 -->
+            <view class="publisher-info">
+              <image src="{{item.publisherInfo.avatarUrl}}" class="avatar" mode="aspectFill" />
+              <text class="nickname">{{item.publisherInfo.nickname}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 右列 -->
+    <view class="waterfall-column">
+      <block wx:for="{{rightColumnGoods}}" wx:key="_id">
+        <view class="goods-card" bindtap="goDetail" data-id="{{item._id}}">
+          <!-- 商品图片 -->
+          <view class="image-wrapper">
+            <image 
+              class="goods-image" 
+              src="{{item.images && item.images.length > 0 ? item.images[0] : '/images/placeholder.png'}}"
+              mode="aspectFill"
+            />
+            <view class="price-tag">¥{{item.price}}</view>
+            <view class="image-overlay"></view>
+          </view>
+
+          <!-- 商品信息区 -->
+          <view class="info-section">
+            <!-- 商品标题 -->
+            <view class="goods-title">{{item.title}}</view>
+            <view class="goods-time">{{item.formattedTime}}</view>
+
+            <!-- 辅助信息：地点 + 时间 -->
+            <view class="meta-row">
+              <text class="location">📍 {{item.location}}</text>
+              <text class="time">{{formatTime(item.createTime)}}</text>
+            </view>
+
+            <!-- 发布者信息 -->
+            <view class="publisher-info">
+              <image src="{{item.publisherInfo.avatarUrl}}" class="avatar" mode="aspectFill" />
+              <text class="nickname">{{item.publisherInfo.nickname}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 无数据提示 -->
+  <view wx:if="{{goodsList.length === 0}}" class="no-data">
+    <image src="/images/empty.png" class="empty-img" />
+    <text class="empty-text">暂无商品</text>
+    <text class="empty-subtext">发布你的闲置，让物品循环起来</text>
+    <button class="empty-btn" bindtap="goPublish">立即发布</button>
+  </view>
+
+  <!-- 回到顶部按钮 -->
+  <view wx:if="{{showScrollTop}}" class="scroll-top" bindtap="scrollToTop">
+    <text class="icon">↑</text>
+  </view>
+
+  <!-- 加载更多提示 -->
+  <view wx:if="{{isLoadingMore}}" class="load-more">
+    <text class="load-text">加载中...</text>
+  </view>
+  
+  
+  </scroll-view>
+</view>

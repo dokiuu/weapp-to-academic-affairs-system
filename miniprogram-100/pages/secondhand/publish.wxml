@@ -1,0 +1,147 @@
+<scroll-view
+  scroll-y
+  class="list"
+  refresher-enabled
+  refresher-triggered="{{triggered}}"
+  bindrefresherrefresh="onRefresh"
+  bindscrolltolower="loadMore"
+  style="height: 100vh;"
+>
+
+<!-- 发布商品页 -->
+<view class="container">
+  <form bindsubmit="formSubmit">
+    <!-- 商品标题 -->
+    <view class="form-item">
+      <text class="label required">商品标题</text>
+      <input 
+        class="input" 
+        name="title" 
+        placeholder="请输入商品标题（20字以内）"
+        maxlength="20"
+        value="{{formData.title}}"
+        bindinput="onTitleInput"
+      />
+      <text class="error">{{errors.title}}</text>
+    </view>
+
+    <!-- 商品价格 -->
+    <view class="form-item">
+      <text class="label required">价格（元）</text>
+      <input 
+        class="input" 
+        name="price" 
+        type="digit" 
+        placeholder="请输入价格"
+        value="{{formData.price}}"
+        bindinput="onPriceInput"
+      />
+      <text class="error">{{errors.price}}</text>
+    </view>
+
+    <!-- 商品描述 -->
+    <view class="form-item">
+      <text class="label required">商品描述</text>
+      <textarea 
+        class="textarea" 
+        name="description" 
+        placeholder="请详细描述商品新旧程度、交易要求等（100字以内）"
+        maxlength="100"
+        value="{{formData.description}}"
+        bindinput="onDescInput"
+      />
+      <text class="error">{{errors.description}}</text>
+    </view>
+
+    <!-- 商品图片 -->
+    <view class="form-item">
+      <text class="label required">商品图片</text>
+      <view class="image-uploader">
+        <block wx:for="{{formData.images}}" wx:key="index">
+          <view class="image-item">
+            <image src="{{item}}" mode="aspectFill" class="uploaded-image"/>
+            <button class="delete-btn" data-index="{{index}}" bindtap="deleteImage">✕</button>
+          </view>
+        </block>
+        <button 
+          class="add-image-btn" 
+          bindtap="chooseImages"
+          wx:if="{{formData.images.length < 9}}"
+        >
+          +
+        </button>
+      </view>
+      <text class="tips">最多上传9张图片</text>
+      <text class="error">{{errors.images}}</text>
+    </view>
+
+    <!-- 交易地点 -->
+    <view class="form-item">
+      <text class="label required">交易点（校区）</text>
+      <input 
+        class="input" 
+        name="location" 
+        placeholder="例如：广州校区、江门校区"
+        value="{{formData.location}}"
+        bindinput="onLocationInput"
+      />
+      <text class="error">{{errors.location}}</text>
+    </view>
+
+    <!-- 联系方式 - 文字 -->
+    <view class="form-item">
+      <text class="label">联系方式（微信号/电话）</text>
+      <input 
+        class="input" 
+        name="contactText" 
+        placeholder="填写微信号或手机号，选填"
+        value="{{formData.contactText}}"
+        bindinput="onContactTextInput"
+      />
+    </view>
+
+    <!-- 联系方式 - 二维码 -->
+    <view class="form-item">
+      <text class="label">微信二维码</text>
+      <view class="qr-uploader">
+        <image 
+          wx:if="{{formData.contactQrCode}}" 
+          src="{{formData.contactQrCode}}" 
+          class="qr-image"
+          mode="aspectFit"
+        />
+        <button 
+          class="upload-qr-btn" 
+          bindtap="uploadQrCode"
+          wx:if="{{!formData.contactQrCode}}"
+        >
+          上传二维码
+        </button>
+        <button 
+          class="delete-qr-btn" 
+          bindtap="deleteQrCode"
+          wx:if="{{formData.contactQrCode}}"
+        >
+          删除二维码
+        </button>
+      </view>
+      <text class="tips">上传微信二维码图片，方便买家扫码联系你</text>
+    </view>
+
+    <!-- 至少填写一种联系方式的提示 -->
+    <view class="form-item">
+      <text class="error">{{errors.contact}}</text>
+    </view>
+
+    <!-- 提交按钮 -->
+    <button 
+      class="submit-btn" 
+      form-type="submit"
+      disabled="{{isSubmitting}}"
+    >
+      {{isSubmitting ? '发布中...' : '立即发布'}}
+    </button>
+  </form>
+</view>
+
+</scroll-view>

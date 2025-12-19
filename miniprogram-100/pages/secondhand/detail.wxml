@@ -1,0 +1,121 @@
+<!-- pages/secondhand/detail.wxml -->
+
+<scroll-view
+  scroll-y
+  class="list"
+  refresher-enabled
+  refresher-triggered="{{triggered}}"
+  bindrefresherrefresh="onRefresh"
+  bindscrolltolower="loadMore"
+  style="height: 100vh;"
+>
+<view class="container">
+  <!-- 商品图片轮播 -->
+  <swiper 
+    class="image-swiper" 
+    indicator-dots="{{true}}" 
+    autoplay="{{false}}" 
+    interval="5000" 
+    duration="500"
+    indicator-color="#ffffff80"
+    indicator-active-color="#fff"
+  >
+    <block wx:for="{{goods.images}}" wx:key="index">
+      <swiper-item>
+        <image src="{{item}}" class="swiper-image" mode="aspectFill" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 商品信息卡片 -->
+  <view class="goods-card">
+    <!-- 标题 -->
+    <view class="goods-title">
+      {{goods.title}}
+    </view>
+
+    <!-- 价格 -->
+    <view class="goods-price">
+      ¥{{goods.price}}
+    </view>
+
+    <!-- 发布者信息 -->
+    <view class="publisher-info">
+      <image src="{{publisherInfo.avatarUrl}}" class="avatar" mode="aspectFill" />
+      <view class="publisher-details">
+        <text class="nickname">{{publisherInfo.nickname}}</text>
+        <text class="publish-time">发布时间: {{goods.formattedCreateTime}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商品描述 -->
+  <view class="section card-section">
+    <view class="section-header">
+      <text class="section-title">📝 商品描述</text>
+    </view>
+    <text class="description">{{goods.description}}</text>
+  </view>
+
+  <!-- 交易地点 -->
+  <view class="section card-section">
+    <view class="section-header">
+      <text class="section-title">📍 交易地点</text>
+    </view>
+    <text class="location">{{goods.location}}</text>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="section card-section contact-section">
+    <view class="section-header">
+      <text class="section-title">📞 联系方式</text>
+    </view>
+
+    <!-- 文字联系方式 -->
+    <view wx:if="{{goods.contactText}}" class="contact-item">
+      <view class="contact-label-value">
+        <text class="contact-label">微信/电话：</text>
+        <text class="contact-value">{{goods.contactText}}</text>
+      </view>
+      <button 
+        class="copy-btn mini-btn" 
+        data-text="{{goods.contactText}}" 
+        bindtap="copyContact"
+      >
+        复制
+      </button>
+    </view>
+
+    <!-- 二维码联系方式 -->
+    <view wx:if="{{goods.contactQrCode}}" class="contact-item qr-item">
+      <button class="show-qr-btn primary-btn" bindtap="showQrCode">
+        👉 查看微信二维码
+      </button>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <button class="want-btn primary-btn large-btn" bindtap="onWantClick">
+      ❤️ 我想要
+    </button>
+  </view>
+
+  <!-- 二维码弹窗 -->
+  <view class="popup-mask" wx:if="{{showQrPopup}}" bindtap="hideQrCode">
+    <view class="popup-content" catchtap>
+      <view class="popup-header">
+        <text class="popup-title">用微信扫二维码联系卖家</text>
+        <button class="close-btn" bindtap="hideQrCode">×</button>
+      </view>
+      <image 
+        src="{{goods.contactQrCode}}" 
+        class="popup-qr-image" 
+        mode="aspectFit"
+      />
+      <text class="popup-tip">长按图片可保存或识别二维码</text>
+    </view>
+  </view>
+</view>
+
+</scroll-view>

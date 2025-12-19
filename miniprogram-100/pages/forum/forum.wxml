@@ -1,0 +1,182 @@
+<!-- 滚动区域 -->
+<scroll-view
+  scroll-y
+  class="list"
+  refresher-enabled
+  refresher-triggered="{{triggered}}"
+  bindrefresherrefresh="onRefresh"
+  bindscrolltolower="loadMore"
+  style="height: 100vh;"
+>
+  <!-- 顶部欢迎区域 -->
+  <view class="welcome-section">
+    <view class="welcome-content">
+      <text class="welcome-title">校园论坛</text>
+      <text class="welcome-subtitle">分享知识，交流想法</text>
+    </view>
+    <image class="welcome-bg" src="/image/forum-bg.png" mode="aspectFill" />
+  </view>
+
+  <!-- 轮播图区域 -->
+  <view class="banner-container">
+    <swiper class="banner-swiper" indicator-dots="{{false}}" autoplay="{{true}}" interval="5000" current="{{currentBanner}}" bindchange="onBannerChange">
+      <block wx:for="{{banners}}" wx:key="_id">
+        <swiper-item>
+          <view class="banner-item" data-item="{{item}}" bindtap="onBannerTap">
+            <image class="banner-image" src="{{item.imageUrl}}" mode="aspectFit"></image>
+            <view class="banner-title">{{item.title}}</view>
+            <!-- 编辑按钮 -->
+            <!-- <view class="banner-edit-btn" data-index="{{index}}" bindtap="onEditBanner" wx:if="{{isAdmin}}">
+              <image class="edit-icon" src="/images/edit.png"></image>
+            </view> -->
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- <view class="banner-indicator">{{currentBanner + 1}}/{{banners.length}}</view> -->
+    
+    <!-- 添加新轮播图按钮 (管理员可见) -->
+    <!-- <view class="add-banner-btn" bindtap="onAddBanner" wx:if="{{isAdmin}}">
+      <image class="add-banner-icon" src="/images/add.png"></image>
+      <text>添加轮播图</text>
+    </view> -->
+    
+    <!-- 新增：公开的轮播图管理入口按钮 -->
+    <!-- <view class="public-manage-banner-btn" bindtap="onPublicManageBannerTap">
+      <text class="manage-text">管理轮播图</text>
+    </view> -->
+  </view>
+  <!-- 置顶帖子 -->
+  <view class="section-title">
+    <image class="title-icon" src="/image/pinned.png" />
+    <text class="title-text">置顶帖子</text>
+  </view>
+  
+  <view wx:for="{{pinnedPosts}}" wx:key="_id" class="post-item pinned-post" bindtap="goDetail" data-id="{{item._id}}">
+    <view class="pinned-badge">置顶</view>
+    <view class="post-header">
+      <image class="avatar" src="{{item.author.avatarUrl || '/image/avatar-default.png'}}" />
+      <view class="author-info">
+        <text class="author-name">{{item.author.nickName}}</text>
+        <text class="post-time">{{item.formattedCreateTime}}</text>
+      </view>
+      <view class="post-tag" wx:if="{{item.tag}}">{{item.tag}}</view>
+    </view>
+    <view class="post-content">
+      <text class="post-title">{{item.title}}</text>
+      <text class="post-body">{{item.content}}</text>
+      <!-- 帖子图片 -->
+      <view class="post-images" wx:if="{{item.imgs && item.imgs.length > 0}}">
+        <image class="post-image" src="{{item.imgs[0]}}" mode="aspectFill" bindtap="previewImage" data-imgurls="{{item.imgs}}" data-current="{{item.imgs[0]}}"/>
+      </view>
+    </view>
+    <!-- <view class="post-stats">
+      <view class="stat-item">
+        <image class="stat-icon" src="/image/eye.png" />
+        <text class="stat-count">{{item.viewCount || 0}}</text>
+      </view>
+    </view> -->
+  </view>
+
+  <!-- 普通帖子 -->
+  <view class="section-title">
+    <image class="title-icon" src="/image/posts.png" />
+    <text class="title-text">最新帖子</text>
+  </view>
+  
+  <view wx:for="{{posts}}" wx:key="_id" class="post-item" bindtap="goDetail" data-id="{{item._id}}">
+    <view class="post-header">
+      <image class="avatar" src="{{item.author.avatarUrl || '/image/avatar-default.png'}}" />
+      <view class="author-info">
+        <text class="author-name">{{item.author.nickName}}</text>
+        <text class="post-time">{{item.formattedCreateTime}}</text>
+      </view>
+      <view class="post-tag" wx:if="{{item.tag}}">{{item.tag}}</view>
+    </view>
+    <view class="post-content">
+      <text class="post-title">{{item.title}}</text>
+      <text class="post-body">{{item.content}}</text>
+      <!-- 帖子图片 -->
+      <view class="post-images" wx:if="{{item.imgs && item.imgs.length > 0}}">
+        <image class="post-image" src="{{item.imgs[0]}}" mode="aspectFill" bindtap="previewImage" data-imgurls="{{item.imgs}}" data-current="{{item.imgs[0]}}"/>
+      </view>
+    </view>
+    
+    <!-- 普通帖子点赞区域 -->
+    <view class="post-footer">
+      <view class="action-buttons">
+        <view class="action-btn like-btn {{item.isLiked ? 'liked' : ''}}" 
+              catchtap="handleLike" data-post="{{item}}">
+          <image class="action-icon" 
+                 src="{{item.isLiked ? '/image/like-filled.png' : '/image/like-empty.png'}}" />
+          <text class="action-count">{{item.likeCount || 0}}</text>
+        </view>
+        
+        <view class="action-btn comment-btn" catchtap="goDetail" data-id="{{item._id}}">
+          <image class="action-icon" src="/image/comment.png" />
+          <text class="action-count">{{item.commentCount || 0}}</text>
+        </view>
+        
+        <!-- <view class="action-btn share-btn" catchtap="openShareModal" data-post="{{item}}">
+          <image class="action-icon" src="/image/share.png" />
+          <text class="action-count">分享</text>
+        </view> -->
+      </view>
+    </view>
+  </view>
+
+  <!-- 分享模态窗 -->
+<view class="share-modal {{shareModalVisible ? 'active' : ''}}" catchtap="closeShareModal">
+  <view class="share-content" catchtap="preventTap">
+    <view class="share-header">
+      <text class="share-title">分享到</text>
+      <image class="close-icon" src="/image/close.png" catchtap="closeShareModal" />
+    </view>
+    
+    <view class="share-options">
+      <button class="share-option" open-type="share" data-type="friend">
+        <view class="share-icon-container">
+          <image class="share-icon" src="/image/wechat-friend.png" />
+        </view>
+        <text class="share-label">微信好友</text>
+      </button>
+      
+      <button class="share-option" open-type="share" data-type="timeline">
+        <view class="share-icon-container">
+          <image class="share-icon" src="/image/wechat-moment.png" />
+        </view>
+        <text class="share-label">朋友圈</text>
+      </button>
+      
+      <view class="share-option" catchtap="copyPostLink">
+        <view class="share-icon-container">
+          <image class="share-icon" src="/image/link.png" />
+        </view>
+        <text class="share-label">复制链接</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 分享成功提示 -->
+<!-- <view class="toast {{showShareSuccess ? 'active' : ''}}">
+  <image class="toast-icon" src="/image/success.png" />
+  <text class="toast-text">分享成功</text>
+</view> -->
+
+  <view wx:if="{{loading}}" class="loading-container">
+    <image class="loading-icon" src="/image/loading.gif" />
+    <text class="loading-text">加载中...</text>
+  </view>
+  
+  <view wx:if="{{nomore}}" class="nomore">
+    <text class="nomore-text">已经到底了哦~</text>
+  </view>
+</scroll-view>
+
+<!-- 浮动按钮 -->
+<view class="float-btn-container">
+  <button class="float-btn" bindtap="goPost">
+    <image class="plus-icon" src="/image/plus-white.png" />
+  </button>
+</view>

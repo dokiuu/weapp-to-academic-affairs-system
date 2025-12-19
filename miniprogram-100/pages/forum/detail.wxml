@@ -1,0 +1,94 @@
+<view class="post">
+  <!-- 帖子头部：作者信息 -->
+  <view class="head">
+    <!-- 使用 navigator 包裹头像和昵称，点击跳转到用户主页 -->
+    <navigator url="/pages/my/profile?stuId={{post.author.stuId}}">
+      <image class="avatar" src="{{post.author.avatarUrl}}" mode="aspectFill" />
+      <text class="name">{{post.author.nickName}}</text>
+    </navigator>
+  </view>
+
+  <!-- 帖子标题 -->
+  <view class="title">{{post.title}}</view>
+
+  <!-- 帖子内容 -->
+  <view class="content">{{post.content}}</view>
+
+  <!-- 图片展示区 -->
+  <view class="imgs" wx:if="{{post.imgs && post.imgs.length > 0}}">
+    <image 
+      wx:for="{{post.imgs}}" 
+      wx:key="*this" 
+      src="{{item}}" 
+      mode="widthFix" 
+      bindtap="previewImage" 
+    data-imgurls="{{post.imgs}}" 
+    data-current="{{item}}" 
+    />
+  </view>
+
+  <!-- 发帖时间 -->
+  <view class="time">{{post.createTime}}</view>
+</view>
+
+<!-- 评论区 -->
+<view class="comments">
+  <view class="cmt-item" wx:for="{{comments}}" wx:key="_id">
+    <!-- 评论者头像：点击跳转到其个人主页 -->
+    <navigator url="/pages/my/profile?stuId={{item.author.stuId}}">
+      <image 
+        class="avatar" 
+        src="{{item.author.avatarUrl}}" 
+        mode="aspectFill"
+      />
+    </navigator>
+
+    <!-- 评论内容 -->
+    <view class="body">
+      <text class="name">{{item.author.nickName}}</text>
+      <text class="text">{{item.content}}</text>
+
+        <!-- 回复按钮 -->
+        <view class="cmt-actions">
+          <view class="reply-btn" bindtap="showReplyInput" data-id="{{item._id}}">
+            回复
+          </view>
+        </view>
+
+        <!-- 回复输入框 -->
+        <view class="reply-input" wx:if="{{showReplyInput && currentReplyCommentId === item._id}}">
+          <input 
+            class="reply-content" 
+            placeholder="写下你的回复..."
+            value="{{replyContent}}"
+            bindinput="bindReplyInput"
+          />
+          <button class="send-reply-btn" bindtap="sendReply">发送</button>
+        </view>
+
+        <!-- 子评论列表 -->
+        <view class="sub-comments" wx:for="{{item.subComments}}" wx:key="index">
+          <image class="sub-avatar" src="{{item.author.avatarUrl}}" mode="aspectFill"/>
+          <view class="sub-content">
+            <text class="sub-author">{{item.author.nickName}}：</text>
+            <text class="sub-text">{{item.content}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 删除按钮 - 只有当前用户是评论作者时才显示 -->
+      <view 
+        class="delete-btn" 
+        bindtap="deleteComment" 
+        data-id="{{item._id}}"
+        wx:if="{{item._stuId === currentStuId}}"
+      >
+        删除
+      </view>
+    </view>
+  </view>
+
+<!-- 底部评论框 -->
+<view class="footer">
+  <input placeholder="说点什么..." model:value="{{cmtContent}}" />
+  <button size="mini" type="primary" bindtap="sendCmt">发送</button>
+</view>

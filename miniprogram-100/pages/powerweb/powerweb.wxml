@@ -1,0 +1,43 @@
+<view class="container">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <text class="title">电费查询</text>
+    <view class="placeholder"></view>
+  </view>
+
+  <!-- 主要内容 -->
+  <view class="content">
+    <view class="qr-code-card">
+      <text class="card-title">电费查询服务号</text>
+      
+      <!-- 二维码图片 -->
+      <image 
+        class="qr-code-image" 
+        src="{{qrCode}}" 
+        mode="widthFix"
+        bindtap="previewQRCode"
+      />
+      
+      <!-- 操作提示 -->
+      <view class="instructions">
+        <text class="step">1. 点击二维码放大查看</text>
+        <text class="step">2. 长按二维码识别</text>
+        <text class="step">3. 关注服务号进行电费查询</text>
+      </view>
+      
+      <!-- 额外提示 -->
+      <view class="extra-tip">
+        <text>如需帮助，请联系学校后勤部门</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 全屏二维码预览 -->
+  <view class="fullscreen-preview" wx:if="{{showFullScreen}}" catchtap="closePreview">
+    <view class="preview-content" catchtap="stopPropagation">
+      <image class="full-qr-code" src="{{qrCode}}" mode="widthFix" />
+      <text class="preview-tip">长按二维码识别</text>
+      <text class="close-tip">点击空白处关闭</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,183 @@
+<!-- agreement.wxml -->
+<view class="container">
+  <scroll-view class="content" scroll-y>
+    <!-- 标题区域 -->
+    <view class="title-section">
+      <text class="main-title">华立空间用户协议</text>
+      <text class="effective-date">本协议生效日期：2025年9月10日</text>
+    </view>
+
+    <!-- 欢迎语 -->
+    <view class="intro">
+      欢迎来到华立空间，本社区旨在为华立学子提供便捷的生活服务。你可以在这里与大家交流，获取有用的资讯，也可以分享自己的经验，彼此互助，让校园生活更美好。
+    </view>
+    <view class="intro">
+      请尊重并认真阅读下面的这些条款。这些条款可能被不定期修改，请定时查看。登录成功代表你已授权同意以下的文字和条款。
+    </view>
+
+    <!-- 协议内容 -->
+    <view class="agreement-content">
+      <!-- 一、社区管理条例 -->
+      <view class="chapter">
+        <text class="chapter-title">一、社区管理条例</text>
+        <view class="section">
+          <text class="section-title">1.凡符合下列任何情况的帖子或评论，都将被进行删除或经举报后被删除：</text>
+          <view class="clause">
+            <text class="clause-number">(1)含有色情、暴力、恐怖、不文明内容</text>
+            <text class="clause-content">详细描写性器官、性行为和性心理、传播色情图片或其他色情内容、详细描写暴力行为过程和身心体验、详细描写恐怖事件和主观感受、引诱他人见面发生性关系或卖淫、雇佣或引诱他人从事暴力活动、恐吓他人以及提供符合上述特点的链接。</text>
+          </view>
+          <view class="clause">
+            <text class="clause-number">(2)具有广告性质</text>
+            <text class="clause-content">为了增加流量而故意引导他人到某个网站或者论坛、为盈利性的组织或个人广告、从事任何物品的交易、宣传和发展传销活动以及符合上述特点的链接。</text>
+          </view>
+          <view class="clause">
+            <text class="clause-number">(3)带有反动内容</text>
+            <text class="clause-content">恶意评价国家现行制度、破坏社会公共秩序、挑起民族、种族、宗教、地域等争端、恶意攻击政府机构与政治官员、宣传迷信活动、和邪教组织以及符合上述特点的链接。</text>
+          </view>
+          <view class="clause">
+            <text class="clause-number">(4)含有人身攻击内容</text>
+            <text class="clause-content">诽谤他人，散布虚假信息；侵犯他人肖像权、隐私权等合法权益；用粗言秽语侮辱他人，造成身心伤害；损害社会团体或组织的名誉；提供符合上述特点的链接。</text>
+          </view>
+          <view class="clause">
+            <text class="clause-number">(5)含有违背伦理道德的内容</text>
+            <text class="clause-content">包含违反社会公共道德的内容、宣扬颓废消极的人生观、劝诱自杀，描写自杀的方法和过程、歧视和贬低弱势群体如残疾、老龄和经济状况较差等、教授侵犯他人权益的方法，如黑客诈骗等、宣传或诱导师生恋、外遇、乱伦等违反伦常的行为、包含其他可能导致他人反感或不快的内容以及提供上述特点的链接。</text>
+          </view>
+        </view>
+        <view class="section">
+          <text class="section-title">2.对账号的管理原则</text>
+          <view class="clause">
+            <text class="clause-content">凡含有下列行为之一者，华立空间有权在接到投诉或举报后封禁其相应的账号：</text>
+            <text class="clause-number">(1)模仿管理人员ID，用假冒管理人员或破坏管理人员形象</text>
+            <text class="clause-number">(2)模仿或盗用他人ID</text>
+            <text class="clause-number">(3)个性签名包含影响严重网友浏览的内容或格式</text>
+            <text class="clause-number">(4)其他被投诉或被举报为不恰当的情况</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 二、权利说明 -->
+      <view class="chapter">
+        <text class="chapter-title">二、权利说明</text>
+        <view class="clause">
+          <text class="clause-number">1.署名：</text>
+          <text class="clause-content">您允许他人对自己享有著作权的作品及演绎作品进行复制、发行、展览、表演、放映、广播或通过信息网络向公众传播，但在这些过程中对方必须保留您对原作品的署名。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">2.非商业性使用：</text>
+          <text class="clause-content">您允许他人对您享有著作权的作品及演艺作品进行复制、发行、展览、表演、放映、广播或者通过信息网络向公众传播，但仅限于非商业目的。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">3.禁止演绎：</text>
+          <text class="clause-content">您允许他人对您享有著作权的作品及演艺作品进行复制、发行、展览、表演、放映、广播或者通过信息网络向公众传播，不得进行演绎创作。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">4.相同方式共享：</text>
+          <text class="clause-content">只有在他人对演绎作品使用与您的原作品相同的许可协议的情况下，您才允许他人发行其演绎作品。注：许可协议不能同时包含“相同方式共享”和“禁止演绎”许可要素，“相同方式共享”要素仅适用于演绎作品。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">5.社区用户的言论侵犯了任何第三方的著作权或其他权利，第三方提出异议时，华立空间社区有权自行决定删除相关的内容。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">6.华立空间社区根据前述原因删除相关内容的，被删除内容的内容提供者可以依法向社区发出关于被删除不侵犯著作权的反通知。反通知发出后，社区仍能依法回复被删除的内容或链接，且依法对该恢复行为不承担法律责任。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">7.华立空间社区用户发表、转载的所有内容及其它附属品（如示例代码、图片）的版权归于原作者所有。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">8.在华立空间中，你所分享的任何内容都应该是你自己原创。你在发布信息的同时，视作授权我们传播编辑或以其他方式使用你的内容，我们有权在本网站以及我们的其他产品上使用你发布的内容，我们也有权再授权给他人使用该内容。在使用任何你发布的内容时，我们通常会标明你是作者，但这种情况我们会征求你的同意。如转载到站外信息，到华立空间社区请署名和标明出处，当社区用户的言论和行为侵犯了第三方著作权或其他权利，责任在于用户本人，华立空间不承担任何法律责任。</text>
+        </view>
+      </view>
+
+      <!-- 三、用户保证 -->
+      <view class="chapter">
+        <text class="chapter-title">三、用户保证</text>
+        <view class="clause">
+          <text class="clause-number">1.用户应保证在本服务发表或上传的任何内容，包括但不限于文字、图片、视频、软件等不侵犯任何第三方合法权利，包括但不限于商标权、著作权、人物肖像权和商业秘密。未经具有相关所有权人的事先书面同意，用户不得以任何方式上传、发布、修改、传播或复制任何含有第三方权利的材料、商标或属于其他人的专有信息。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">2.若用户在本服务上传的内容侵犯第三方权利，用户应当负责处理第三方的权利主张，承担由此导致的全部费用，包括但不限于律师费和侵权赔偿，并保证本服务不会因此遭受任何损失。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">3.当第三方认为用户发表或上传于本网站的信息侵犯其权利，而向本平台发送权利通知书时，用户同意三星可经自行判断决定删除涉嫌侵权信息，除非用户提交书面证据材料排除侵权可能性，否则本平台将不会主动恢复上述删除信息。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">4.用户在本服务或本服务的一部分中提供的所有内容（包括视频及声音文件、数据文件、图片、音乐、照片、软件、视频以及书面文本）（以下简称“内容”）完全由“内容”原创人员负责。该“内容”可能会收到第三方（比如向华立空间提供此“内容”进行修改、出租、租借、借贷、销售、传播，或根据此“内容”的任何部分创作派生内容或作品（无论全部或部分内容），或授权他人使用本“内容”。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">5.用户需知晓，在使用本服务过程中，将会承担一定的风险：用户可能会发现发现某些“内容”附带攻击性、不恰当或者令人反感，而用户以任何方式使用本服务，即被视为用户愿意承担由此带来的任何风险。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">6.华立空间可能会根据可适用法律对声称的知识产权侵权或违法其他法律的公告做出反应，终止、暂停或屏蔽对多次侵犯知识产权法律或违反其他可使用法律的用户账户的访问（无论是暂时性的还是永久性的）。</text>
+        </view>
+      </view>
+
+      <!-- 四、免责声明 -->
+      <view class="chapter">
+        <text class="chapter-title">四、免责声明</text>
+        <view class="clause">
+          <text class="clause-number">1.用户在本论坛发布的言论仅代表其个人意见和观点，于本站立场无关。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">2.用户违规操作所产生的一切后果与本站无关，由用户自行承担。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">3.用户因其使用本站产生的一切后果由其自己承担，本小程序不承担任何责任。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">4.本小程序管理员有权保留或删除本社区内的任何内容。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">5.用户因其使用本站产生的一切后果由其自己承担，本小程序不承担任何责任。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">6.用户明确同意其使用本服务所存在的风险以及一切后果将完全由本人承担，华立空间对此不承担任何责任。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">7.网络交友有风险，请谨慎把握交友行为。用户应根据自身情况妥善选择与对方的交流方式，若对方进行不友善的发言，用户可以联系我们进行信息上的惩戒。用户自行选择是否添加好友，对于在平台外发生的事故我们概不负责。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">8.我们无法保障用户所填信息的真实性，就任何信息不准确或错误对用户或任何人士不负任何直接或间接的责任。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">9.最终解释权归开发者所有。</text>
+        </view>
+      </view>
+
+      <!-- 五、知识产权及相关权益 -->
+      <view class="chapter">
+        <text class="chapter-title">五、知识产权及相关权益</text>
+        <view class="clause">
+          <text class="clause-content">华立空间内采用的任何内容，包括但不局限于程序代码、界面设计、版面框架、数据资料、账号、文字、图片、图形、图标等，若有违规，我方会立即撤出相关内容。</text>
+        </view>
+      </view>
+
+      <!-- 六、隐私协议 -->
+      <view class="chapter">
+        <text class="chapter-title">六、隐私协议</text>
+        <view class="clause">
+          <text class="clause-number">1.用户登录时，我方将根据用户信息获取教务服务权限，从而获取相关教务信息，其中，用户在登录课表、使用到退出登录关闭程序，全过程，我方都不会以任何形式存储或故意泄露用户相关教务信息。用户的信息是我们业务的重要组成部分，在未征得您的同意之前，我们不会出售或以其他方式共享您的个人信息。因为我方极度重视用户隐私。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">2.课表中的个人信息模块仅用于用户自身校验教务信息，我方不对此采取任何处理。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">3.我们需要获取的用户信息类型包括：</text>
+          <text class="clause-content">（1）教务系统的账号密码</text>
+          <text class="clause-content">（2）微信的用户名称和头像。</text>
+          <text class="clause-content">我们不会收集与其提供的服务无关的个人信息，华立空间会依照法律、行政法规的规定和用户协议，妥善处理保存的用户信息。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">4.用户信息的获取目的：</text>
+          <text class="clause-content">通过用户账号密码，登录验证该用户是否为本校学生，我们不会对获取到的任何信息进行任何形式的存储。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">5.保障信息安全及补救</text>
+          <text class="clause-content">我们会采取技术措施和其他必要措施，确保其收集的个人信息安全，防止信息泄露、毁损、丢失。在发生或者可能发生个人信息泄露、毁损、丢失的情况时，我们会立即采取补救措施，并按照规定及时告知用户并向有关部门报告。</text>
+        </view>
+        <view class="clause">
+          <text class="clause-number">6.最终解释权归华立空间开发者所有。</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

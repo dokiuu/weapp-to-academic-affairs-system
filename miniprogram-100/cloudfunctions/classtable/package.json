@@ -1,0 +1,17 @@
+{
+  "name": "classtable",
+  "version": "1.0.0",
+  "description": "课表抓取云函数",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.12",
+    "install": "^0.13.0",
+    "wx-server-sdk": "~3.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

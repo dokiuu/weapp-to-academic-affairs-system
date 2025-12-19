@@ -1,0 +1,98 @@
+.club-detail-container {
+  padding: 40rpx;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.club-header {
+  text-align: center;
+  margin-bottom: 60rpx;
+  width: 100%;
+}
+
+.club-title {
+  display: block;
+  font-size: 42rpx;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 16rpx;
+}
+
+.club-subtitle {
+  font-size: 28rpx;
+  color: #718096;
+}
+
+.qr-code-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24rpx;
+  padding: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10rpx 40rpx rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10rpx);
+  margin-bottom: 60rpx;
+  width: 80%;
+}
+
+.qr-code-image {
+  width: 400rpx;
+  height: 400rpx;
+  border-radius: 16rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 8rpx 25rpx rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.qr-code-image:active {
+  transform: scale(0.98);
+}
+
+.qr-code-tip {
+  font-size: 28rpx;
+  color: #667eea;
+  margin-bottom: 16rpx;
+  font-weight: 500;
+}
+
+.qr-code-desc {
+  font-size: 26rpx;
+  color: #718096;
+  text-align: center;
+}
+
+.action-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.back-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 50rpx;
+  padding: 24rpx 60rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  box-shadow: 0 6rpx 20rpx rgba(102, 126, 234, 0.4);
+}
+
+.back-btn::after {
+  border: none;
+}
+
+/* 长按提示动画 */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.long-press-hint {
+  animation: pulse 1.5s infinite;
+}

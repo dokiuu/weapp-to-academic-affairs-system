@@ -1,0 +1,33 @@
+const app = getApp()
+
+Page({
+  data: { kb: [], emptyTip: '' },
+
+  onShow() {
+    const { stuId, pwd } = app.globalData
+    if (!stuId || !pwd) {
+      wx.switchTab({ url: '/pages/my/my' })
+      return
+    }
+
+    wx.showLoading({ title: '加载中' })
+    wx.cloud.callFunction({
+      name: 'classtable',
+      data: { stuId, pwd }
+    }).then(res => {
+      wx.hideLoading()
+      console.log('原始云函数返回：', JSON.stringify(res))   // ← 关键
+      const result = res.result || res
+      console.log('解析后 result：', JSON.stringify(result)) // ← 关键
+      if (result && result.code === 0) {
+        this.setData({ kb: result.data || [], emptyTip: '' })
+      } else {
+        this.setData({ kb: [], emptyTip: result ? result.msg : '未知错误' })
+      }
+    }).catch(err => {
+      wx.hideLoading()
+      console.error(err)
+      this.setData({ kb: [], emptyTip: '网络异常，请重试' })
+    })
+  }
+})

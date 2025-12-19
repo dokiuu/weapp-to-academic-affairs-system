@@ -1,0 +1,22 @@
+{
+  "name": "miniprogram-100",
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve -s . -p 8000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/cheerio": "^0.22.35",
+    "@vant/weapp": "^1.11.7",
+    "axios": "^1.11.0",
+    "base-64": "^1.0.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

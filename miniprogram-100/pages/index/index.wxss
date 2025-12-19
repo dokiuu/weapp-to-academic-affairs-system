@@ -1,0 +1,346 @@
+/* index.wxss */
+
+/* 用户状态栏样式 */
+.user-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 30rpx;
+  background: linear-gradient(135deg, #6ad5ff, #4a69e2);
+  color: white;
+  position: relative;
+  z-index: 10;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  margin-right: 20rpx;
+}
+
+.user-name {
+  font-size: 32rpx;
+  font-weight: 500;
+  max-width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.login-status {
+  padding: 8rpx 20rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.login-status.logged-in {
+  background: rgba(76, 175, 80, 0.2);
+  border: 1rpx solid rgba(76, 175, 80, 0.5);
+}
+
+.login-status.not-logged {
+  background: rgba(244, 67, 54, 0.2);
+  border: 1rpx solid rgba(244, 67, 54, 0.5);
+}
+
+/* 调整页面容器上边距 */
+.page-container {
+  padding: 0 20rpx 20rpx;
+  background: linear-gradient(to bottom, #f5f7fa, #e8ecf1);
+  min-height: 100vh;
+  margin-top: -20rpx;
+  border-radius: 30rpx 30rpx 0 0;
+  position: relative;
+  z-index: 1;
+  padding-top: 30rpx;
+}
+
+/* 调整页面容器上边距 */
+.page-container {
+  padding: 0 20rpx 20rpx;
+  background: linear-gradient(to bottom, #f5f7fa, #e8ecf1);
+  min-height: 100vh;
+  margin-top: -20rpx; /* 与状态栏重叠一部分 */
+  border-radius: 30rpx 30rpx 0 0;
+  position: relative;
+  z-index: 1;
+  padding-top: 30rpx; /* 增加上内边距 */
+}
+
+.page-container {
+  padding: 20rpx;
+  background: linear-gradient(to bottom, #f5f7fa, #e8ecf1);
+  min-height: 100vh;
+}
+
+/* 顶部区域 - 轮播图+日历+运势 */
+.top-section {
+  display: flex;
+  background: #fff;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.08);
+  margin-bottom: 30rpx;
+}
+
+/* 左侧轮播图 */
+.carousel-container {
+  flex: 5;
+  height: 320rpx;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 右侧日历和运势 */
+.calendar-fortune {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #4a69e2, #6a8cff);
+  color: white;
+}
+
+.date-display {
+  text-align: center;
+}
+
+.day {
+  font-size: 64rpx;
+  font-weight: bold;
+  display: block;
+  line-height: 1.2;
+}
+
+.week {
+  font-size: 28rpx;
+  opacity: 0.9;
+}
+
+.fortune-section {
+  text-align: center;
+}
+
+.fortune-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  border-radius: 50rpx;
+  padding: 16rpx 24rpx;
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  backdrop-filter: blur(10rpx);
+}
+
+.fortune-btn:after {
+  border: none;
+}
+
+.fortune-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 12rpx;
+}
+
+.fortune-result {
+  text-align: center;
+}
+
+.result-label {
+  font-size: 26rpx;
+  opacity: 0.9;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.fortune-level {
+  font-size: 36rpx;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 6rpx;
+}
+
+.fortune-desc {
+  font-size: 24rpx;
+  opacity: 0.9;
+  display: block;
+}
+
+/* 运势等级颜色 */
+.level-great { color: #ff4d4f; } /* 大吉 */
+.level-very-good { color: #ffa940; } /* 中吉 */
+.level-good { color: #73d13d; } /* 吉 */
+.level-slight-good { color: #f4f759; } /* 小吉 */
+.level-little-good { color: #8c8c8c; } /* 凶 */
+
+/* 分区标题 */
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+  padding-left: 10rpx;
+}
+
+.section-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 16rpx;
+}
+
+.section-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+/* 考试倒计时区域 */
+.exam-section {
+  margin-bottom: 40rpx;
+}
+
+.countdown-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.countdown-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 6rpx 24rpx rgba(0, 0, 0, 0.06);
+}
+
+.countdown-card.cet {
+  border-left: 8rpx solid #ff4d4f;
+}
+
+.countdown-card.jlpt {
+  border-left: 8rpx solid #36cfc9;
+}
+
+.exam-info {
+  display: flex;
+  align-items: center;
+}
+
+.exam-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+
+.exam-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.exam-name {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 6rpx;
+}
+
+.exam-date {
+  font-size: 24rpx;
+  color: #8c8c8c;
+}
+
+.days-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 120rpx;
+}
+
+.days-number {
+  font-size: 52rpx;
+  font-weight: bold;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+.days-text {
+  font-size: 24rpx;
+  color: #8c8c8c;
+  margin-top: 6rpx;
+}
+
+.days-left.urgent .days-number {
+  color: #ff4d4f;
+}
+
+/* 校园服务区域 */
+.service-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+.service-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 22%;
+}
+
+.service-icon-container {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16rpx;
+}
+
+/* 服务图标背景色 */
+.club-bg { background: rgba(24, 144, 255, 0.1); }
+.gym-bg { background: rgba(47, 194, 91, 0.1); }
+.takeout-bg { background: rgba(250, 173, 20, 0.1); }
+.electric-bg { background: rgba(114, 46, 209, 0.1); }
+.bus-bg { background: rgba(19, 194, 194, 0.1); }
+.print-bg { background: rgba(82, 196, 26, 0.1); }
+.pass-bg { background: rgba(245, 34, 45, 0.1); }
+.more-bg { background: rgba(135, 138, 153, 0.1); }
+
+.service-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.service-name {
+  font-size: 24rpx;
+  color: #595959;
+  text-align: center;
+}

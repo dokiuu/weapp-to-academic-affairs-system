@@ -1,0 +1,599 @@
+/* 论坛样式 */
+/* 滚动区域 */
+.list {
+  background: linear-gradient(180deg, #f0f8ff 0%, #e6f7ff 100%);
+  height: 100vh;
+}
+
+/* 轮播图区域 - 蓝色风格 */
+.banner-section {
+  padding: 20rpx 25rpx;
+  margin-bottom: 10rpx;
+}
+
+.banner-swiper {
+  height: 280rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 24rpx rgba(24, 144, 255, 0.2);
+}
+
+.banner-item {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+
+.banner-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 25rpx;
+  background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+  color: white;
+}
+
+.banner-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+  color: white;
+}
+
+.banner-desc {
+  font-size: 24rpx;
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.banner-indicator {
+  position: absolute;
+  bottom: 20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12rpx; /* 稍微增大间距 */
+  padding: 10rpx 15rpx; /* 增加内边距 */
+  background-color: rgba(0, 0, 0, 0.3); /* 半透明背景 */
+  border-radius: 20rpx; /* 圆角背景 */
+}
+
+.banner-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.banner-dot.active {
+  width: 30rpx;
+  background: #1890ff;
+  border-radius: 6rpx;
+}
+
+/* 顶部欢迎区域 - 蓝色风格 */
+.welcome-section {
+  position: relative;
+  height: 75rpx;
+  margin: 20rpx 25rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 24rpx rgba(24, 144, 255, 0.2);
+}
+
+.welcome-bg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  background-color: #5cc4fc;
+}
+
+.welcome-content {
+  position: absolute;
+  top: 50%;
+  left: 30rpx;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.welcome-title {
+  display: block;
+  font-size: 38rpx;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10rpx;
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.3);
+}
+
+.welcome-subtitle {
+  display: block;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1rpx 4rpx rgba(0, 0, 0, 0.3);
+}
+
+
+.banner-item {
+  position: relative;
+}
+
+.banner-edit-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.edit-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* 添加轮播图按钮 (管理员) */
+.add-banner-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #07c160;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.add-banner-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+}
+
+/* 新增：公开的轮播图管理入口按钮 */
+.public-manage-banner-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px); /* 毛玻璃效果 */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.public-manage-banner-btn:active {
+  background: rgba(0, 0, 0, 0.7); /* 点击时加深 */
+}
+
+.manage-text {
+  /* 可以在这里添加图标等 */
+}
+
+
+/* 分区标题 - 蓝色风格 */
+.section-title {
+  display: flex;
+  align-items: center;
+  padding: 25rpx 30rpx 15rpx;
+  background: white;
+  margin: 15rpx 0;
+  border-left: 6rpx solid #1890ff;
+}
+
+.title-icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 15rpx;
+}
+
+.title-text {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #096dd9;
+}
+
+/* 帖子项 - 蓝色风格 */
+.post-item {
+  background: white;
+  margin: 15rpx 25rpx;
+  padding: 25rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 16rpx rgba(24, 144, 255, 0.1);
+  border: 1rpx solid #e6f7ff;
+  transition: all 0.3s ease;
+}
+
+.post-item:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 8rpx rgba(24, 144, 255, 0.15);
+}
+
+.pinned-post {
+  border: 2rpx solid #ffd666;
+  background: linear-gradient(135deg, #fffbe6 0%, #fff1b8 100%);
+}
+
+.pinned-badge {
+  position: absolute;
+  top: 15rpx;
+  right: 15rpx;
+  background: #ffc53d;
+  color: #fff;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: bold;
+}
+
+/* 帖子头部 */
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+
+.avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  border: 2rpx solid #e6f7ff;
+  margin-right: 20rpx;
+}
+
+.author-info {
+  flex: 1;
+}
+
+.author-name {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 5rpx;
+}
+
+.post-time {
+  display: block;
+  font-size: 24rpx;
+  color: #8c8c8c;
+}
+
+.post-tag {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  color: white;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+/* 帖子内容 */
+.post-content {
+  margin-bottom: 20rpx;
+}
+
+/* 帖子图片容器 */
+.post-images {
+  margin-top: 15rpx;
+  width: 100%;
+  height: 200rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+/* 帖子图片样式 */
+.post-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 图片点击放大效果 */
+.post-image:active {
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}
+
+.post-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #262626;
+  margin-bottom: 15rpx;
+  line-height: 1.4;
+}
+
+.post-body {
+  display: block;
+  font-size: 28rpx;
+  color: #595959;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* 帖子底部操作区 */
+.post-footer {
+  border-top: 1rpx solid #f0f8ff;
+  padding-top: 20rpx;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 30rpx;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 20rpx;
+  border-radius: 25rpx;
+  background: #f0f8ff;
+  transition: all 0.3s ease;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+
+.action-count {
+  font-size: 26rpx;
+  color: #595959;
+  font-weight: 500;
+}
+
+.like-btn.liked {
+  background: #fff2e8;
+}
+
+.like-btn.liked .action-count {
+  color: #ff7a45;
+}
+
+.comment-btn {
+  background: #f6ffed;
+}
+
+.comment-btn .action-count {
+  color: #52c41a;
+}
+
+/* 分享模态窗 - 蓝色风格 */
+.share-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.share-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.share-content {
+  background: white;
+  width: 100%;
+  border-radius: 30rpx 30rpx 0 0;
+  padding: 40rpx 30rpx;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+}
+
+.share-modal.active .share-content {
+  transform: translateY(0);
+}
+
+.share-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f0f8ff;
+}
+
+.share-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #262626;
+}
+
+.close-icon {
+  width: 36rpx;
+  height: 36rpx;
+  padding: 15rpx;
+}
+
+.share-options {
+  display: flex;
+  justify-content: space-around;
+  gap: 20rpx;
+}
+
+.share-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.share-option::after {
+  border: none;
+}
+
+.share-icon-container {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #e6f7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15rpx;
+  transition: all 0.3s ease;
+}
+
+.share-option:active .share-icon-container {
+  background: #bae7ff;
+  transform: scale(0.95);
+}
+
+.share-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.share-label {
+  font-size: 26rpx;
+  color: #595959;
+}
+
+/* 加载状态 */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx;
+  background: white;
+  margin: 20rpx 25rpx;
+  border-radius: 16rpx;
+}
+
+.loading-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-bottom: 20rpx;
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #8c8c8c;
+}
+
+.nomore {
+  text-align: center;
+  padding: 40rpx;
+  color: #8c8c8c;
+  font-size: 28rpx;
+}
+
+.nomore-text {
+  display: inline-block;
+  padding: 15rpx 30rpx;
+  background: #f0f8ff;
+  border-radius: 25rpx;
+  color: #1890ff;
+}
+
+/* 浮动按钮 - 蓝色风格 */
+.float-btn-container {
+  position: fixed;
+  right: 30rpx;
+  bottom: 100rpx;
+  z-index: 999;
+}
+
+.float-btn {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  box-shadow: 0 8rpx 24rpx rgba(24, 144, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.float-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 4rpx 12rpx rgba(24, 144, 255, 0.3);
+}
+
+.plus-icon {
+  width: 40rpx;
+  height: 40rpx;
+  filter: brightness(0) invert(1);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .welcome-section {
+    height: 180rpx;
+    margin: 15rpx 20rpx;
+  }
+  
+  .post-item {
+    margin: 12rpx 20rpx;
+    padding: 20rpx;
+  }
+  
+  .banner-swiper {
+    height: 240rpx;
+  }
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.post-item {
+  animation: fadeInUp 0.4s ease-out;
+}

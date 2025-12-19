@@ -1,0 +1,133 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20rpx;
+}
+
+/* 头部导航 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: #fff;
+  border-radius: 15rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.1);
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.back-icon {
+  margin-right: 10rpx;
+  font-size: 36rpx;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.placeholder {
+  width: 120rpx;
+}
+
+/* 主要内容 */
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.qr-code-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 500rpx;
+}
+
+.card-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+
+.qr-code-image {
+  width: 300rpx;
+  height: 300rpx;
+  border: 1rpx solid #eee;
+  border-radius: 10rpx;
+  margin-bottom: 30rpx;
+}
+
+/* 操作说明 */
+.instructions {
+  margin-bottom: 25rpx;
+}
+
+.step {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 12rpx;
+  line-height: 1.6;
+}
+
+.extra-tip {
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.extra-tip text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 全屏预览 */
+.fullscreen-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.preview-content {
+  background: #fff;
+  padding: 40rpx;
+  border-radius: 20rpx;
+  text-align: center;
+}
+
+.full-qr-code {
+  width: 400rpx;
+  height: 400rpx;
+  margin-bottom: 20rpx;
+}
+
+.preview-tip {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 15rpx;
+}
+
+.close-tip {
+  font-size: 24rpx;
+  color: #999;
+}

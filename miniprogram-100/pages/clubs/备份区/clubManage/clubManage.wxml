@@ -1,0 +1,62 @@
+<view class="manage-container">
+  <view class="manage-header">
+    <text class="title">社团管理</text>
+    <button class="add-btn" bindtap="addNewClub">添加新社团</button>
+  </view>
+
+  <scroll-view class="club-list" scroll-y>
+    <view class="club-item" wx:for="{{clubs}}" wx:key="_id">
+      <image class="club-poster" src="{{item.poster}}" mode="aspectFill"></image>
+      
+      <view class="club-info">
+        <text class="club-name">{{item.name}}</text>
+        <text class="club-desc">{{item.description || '暂无简介'}}</text>
+      </view>
+
+      <view class="action-buttons">
+        <button class="edit-btn" bindtap="editClub" data-item="{{item}}">编辑</button>
+        <button class="delete-btn" bindtap="deleteClub" data-id="{{item._id}}">删除</button>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 添加/编辑弹窗 -->
+  <view class="modal" wx:if="{{showModal}}" catchtap="closeModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text>{{isEditing ? '编辑社团' : '添加社团'}}</text>
+        <text class="close" bindtap="closeModal">×</text>
+      </view>
+
+      <view class="form">
+        <view class="form-item">
+          <text class="label">社团名称</text>
+          <input value="{{currentClub.name}}" bindinput="onNameChange" placeholder="请输入社团名称" />
+        </view>
+
+        <view class="form-item">
+          <text class="label">社团简介</text>
+          <textarea value="{{currentClub.description}}" bindinput="onDescChange" placeholder="请输入社团简介" />
+        </view>
+
+        <view class="form-item">
+          <text class="label">海报图片</text>
+          <view class="upload-area" bindtap="uploadPoster">
+            <image wx:if="{{currentClub.poster}}" src="{{currentClub.poster}}" class="preview-image" />
+            <text wx:else>点击上传海报</text>
+          </view>
+        </view>
+
+        <view class="form-item">
+          <text class="label">公众号二维码</text>
+          <view class="upload-area" bindtap="uploadQRCode">
+            <image wx:if="{{currentClub.qrCode}}" src="{{currentClub.qrCode}}" class="preview-image" />
+            <text wx:else>点击上传二维码</text>
+          </view>
+        </view>
+
+        <button class="submit-btn" bindtap="submitForm">保存</button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,169 @@
+<!--index.wxml-->
+
+<!-- 用户状态栏 -->
+<view class="user-status-bar" style="padding-top: {{statusBarHeight}}px">
+  <view class="user-info" bindtap="goToProfile">
+    <image class="user-avatar" src="{{avatarUrl || '/images/default-avatar.png'}}"></image>
+    <text class="user-name">{{nickName}}</text>
+  </view>
+  <view class="login-status {{hasLogin ? 'logged-in' : 'not-logged'}}">
+    <text>{{hasLogin ? '已登录' : '未登录'}}</text>
+  </view>
+</view>
+
+
+<view class="page-container">
+  <!-- 顶部轮播图+日历+运势区域 -->
+  <view class="top-section">
+    <!-- 左侧轮播图 -->
+    <view class="carousel-container">
+      <swiper class="carousel" autoplay interval="5000" circular indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#ffffff">
+        <!-- <swiper-item>
+          <image class="carousel-image" src="https://img.phb123.com/uploads/allimg/220812/812-220Q2141H10-L.png" mode="aspectFill" />
+        </swiper-item> -->
+        <swiper-item>
+          <image class="carousel-image" src="https://pic4.zhimg.com/v2-d350ee89e8e12ec45ebdeec4621f2915_1200x500.jpg" mode="aspectFill" />
+        </swiper-item>
+        <!-- <swiper-item>
+          <image class="carousel-image" src="https://img3.job1001.com/zhuanti/2020/24365/images/school-2/56.jpg" mode="aspectFill" />
+        </swiper-item> -->
+      </swiper>
+    </view>
+    
+    <!-- 右侧日历和运势 -->
+    <view class="calendar-fortune">
+      <view class="date-display">
+        <text class="day">{{date}}</text>
+        <text class="week">{{week}}</text>
+      </view>
+      
+      <view class="fortune-section">
+        <block wx:if="{{!hasDrawnToday}}">
+          <button class="fortune-btn" bindtap="drawFortune">
+            <image class="fortune-icon" src="/image/fortune-icon.png"></image>
+            <text>今日运势</text>
+          </button>
+        </block>
+        
+        <block wx:else>
+          <view class="fortune-result">
+            <text class="result-label">今日运势：</text>
+            <text class="fortune-level level-{{levelType}}">{{level}}</text>
+            <text class="fortune-desc">{{desc}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+  <!-- 考试倒计时 -->
+  <view class="exam-section">
+    <view class="section-header">
+      <image class="section-icon" src="/image/exam-icon.png"></image>
+      <text class="section-title">考试倒计时</text>
+    </view>
+    
+    <view class="countdown-cards">
+      <view class="countdown-card cet">
+        <view class="exam-info">
+          <image class="exam-icon" src="/image/cet-icon.png"></image>
+          <view class="exam-details">
+            <text class="exam-name">四六级考试</text>
+            <text class="exam-date">愿你终成所愿，愿你一往无前。</text>
+          </view>
+        </view>
+        <view class="days-left {{cetDays <= 7 ? 'urgent' : ''}}">
+          <text class="days-number">{{cetDays}}</text>
+          <text class="days-text">天</text>
+        </view>
+      </view>
+      
+      <view class="countdown-card jlpt">
+        <view class="exam-info">
+          <image class="exam-icon" src="/image/jlpt-icon.png"></image>
+          <view class="exam-details">
+            <text class="exam-name">日语N1/N2</text>
+            <text class="exam-date">学习与坐禅相似，须有一颗恒心。</text>
+          </view>
+        </view>
+        <view class="days-left {{jlptDays <= 7 ? 'urgent' : ''}}">
+          <text class="days-number">{{jlptDays}}</text>
+          <text class="days-text">天</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 校园服务 -->
+  <view class="service-section">
+    <view class="section-header">
+      <image class="section-icon" src="/image/service-icon.png"></image>
+      <text class="section-title">校园服务</text>
+    </view>
+    
+    <view class="service-grid">
+      <!-- 第一行 -->
+      <view class="service-row">
+        <view class="service-item" bindtap="goToClubs">
+          <view class="service-icon-container club-bg">
+            <image class="service-icon" src="/image/club-icon.png"></image>
+          </view>
+          <text class="service-name">社团协会</text>
+        </view>
+        <view class="service-item" >
+        
+        <!-- <view class="service-item" bindtap="navigateToGym"> -->
+          <view class="service-icon-container gym-bg">
+            <image class="service-icon" src="/image/gym-icon.png"></image>
+          </view>
+          <text class="service-name">健身预约</text>
+        </view>
+        
+        <view class="service-item" bindtap="navigateToTakeout">
+          <view class="service-icon-container takeout-bg">
+            <image class="service-icon" src="/image/takeout-icon.png"></image>
+          </view>
+          <text class="service-name">校园外卖</text>
+        </view>
+        
+        <view class="service-item" bindtap="navigateToElectric">
+          <view class="service-icon-container electric-bg">
+            <image class="service-icon" src="/image/electric-icon.png"></image>
+          </view>
+          <text class="service-name">电费查询</text>
+        </view>
+      </view>
+      
+      <!-- 第二行 -->
+      <view class="service-row">
+        <view class="service-item" bindtap="navigateToTakeBus">
+          <view class="service-icon-container bus-bg">
+            <image class="service-icon" src="/image/bus-icon.png"></image>
+          </view>
+          <text class="service-name">大巴服务</text>
+        </view>
+
+        <view class="service-item" bindtap="navigateToPrint">
+          <view class="service-icon-container print-bg">
+            <image class="service-icon" src="/image/print-icon.png"></image>
+          </view>
+          <text class="service-name">打印服务</text>
+        </view>
+
+        <view class="service-item" bindtap="navigateToPass">
+          <view class="service-icon-container pass-bg">
+            <image class="service-icon" src="/image/hualiyuan-icon.png"></image>
+          </view>
+          <text class="service-name">通行码</text>
+        </view>
+
+        <view class="service-item" bindtap="navigateToMore">
+          <view class="service-icon-container more-bg">
+            <image class="service-icon" src="/image/more-icon.png"></image>
+          </view>
+          <text class="service-name">敬请期待</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

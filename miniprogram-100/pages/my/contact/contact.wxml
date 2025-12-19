@@ -1,0 +1,54 @@
+<!-- contact.wxml -->
+<view class="container">
+  <!-- 顶部导航 -->
+  <view class="page-header">
+    <text class="title">联系我们</text>
+  </view>
+
+  <!-- 二维码容器 -->
+        <view class="qrcode-container">
+          <image class="qrcode" src="/image/开发者微信qr.jpg" mode="widthFix" bindtap="previewQrCode" bindlongpress="scanQrCode"></image>
+          <view ></view>
+        </view>
+        
+  <!-- 主内容区 -->
+  <view class="content">
+   
+
+    <!-- 联系卡片 -->
+    <view class="contact-card">
+      <view class="card-header">
+        <text class="card-title">扫码联系开发者</text>
+        <text class="card-desc">工作日 不定时 在线</text>
+      </view>
+      
+     
+      <!-- 联系信息 -->
+      <view class="contact-info">
+        <view class="info-item">
+          <text class="icon">✉️</text>
+          <text class="text">19047077248@163.com</text>
+        </view>
+        <view class="info-item">
+          <text class="icon">📱</text>
+          <text class="text">19047077248</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 声明区域 -->
+    <view class="statement-section">
+      <view class="section-title">服务声明</view>
+      <view class="statement-content">
+        <text class="statement-item">1. 客服工作时间: 任意时间，随工作量而定</text>
+        <text class="statement-item">2. 请提供相关截图和详细描述以便快速解决问题</text>
+        <text class="statement-item">3. 我们尊重用户隐私，不会泄露您的个人信息</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部版权信息 -->
+  <view class="footer">
+    <text class="copyright">© 2025 dokidoki 个人所有</text>
+  </view>
+</view>

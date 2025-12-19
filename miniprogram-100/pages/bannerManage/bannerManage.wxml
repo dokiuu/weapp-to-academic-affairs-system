@@ -1,0 +1,34 @@
+<!-- pages/bannerManage/bannerManage.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">轮播图管理</text>
+    <button class="add-btn" bindtap="onAddBannerTap">+ 添加轮播图</button>
+  </view>
+
+  <scroll-view scroll-y class="banner-list">
+    <view wx:for="{{banners}}" wx:key="_id" class="banner-item">
+      <image class="banner-preview" src="{{item.imageUrl}}" mode="aspectFill" bindtap="previewImage" data-url="{{item.imageUrl}}"></image>
+      <view class="banner-info">
+        <text class="banner-title">{{item.title}}</text>
+        <text class="banner-date">创建时间: {{item.createTime}}</text>
+        <!-- 可以添加更多字段显示，如排序、链接等 -->
+      </view>
+      <view class="banner-actions">
+        <button class="action-btn edit-btn" bindtap="onEditBannerTap" data-index="{{index}}">编辑</button>
+        <button class="action-btn delete-btn" bindtap="onDeleteBannerTap" data-id="{{item._id}}" data-index="{{index}}">删除</button>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view wx:if="{{loading}}" class="loading-container">
+    <image class="loading-icon" src="/image/loading.gif" />
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <view wx:if="{{banners.length === 0 && !loading}}" class="empty-container">
+    <text class="empty-text">暂无轮播图</text>
+  </view>
+</view>
+
+
+

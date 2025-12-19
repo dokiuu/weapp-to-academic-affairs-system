@@ -1,0 +1,183 @@
+/* pages/my/mypublish.wxss */
+page {
+  background-color: #f0f8ff;
+}
+
+/* 标题栏样式 - 匹配forum首页 */
+.page-header {
+  background: linear-gradient(135deg, #1890ff 0%, #5cc4fc 100%);
+  height: 80rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20rpx 25rpx;
+  box-shadow: 0 8rpx 24rpx rgba(24, 144, 255, 0.2);
+}
+
+.header-title {
+  color: white;
+  font-size: 34rpx;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+}
+
+.container {
+  padding: 25rpx;
+  box-sizing: border-box;
+}
+
+/* ============= 加载状态 ============= */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.loading-text {
+  margin-top: 20rpx;
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* ============= 空状态 ============= */
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 120rpx 60rpx;
+  text-align: center;
+}
+
+.empty-image {
+  width: 240rpx;
+  height: 240rpx;
+  margin-bottom: 40rpx;
+}
+
+.empty-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.empty-desc {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 50rpx;
+}
+
+.go-publish-btn {
+  width: 360rpx;
+  padding: 24rpx 0;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+/* ============= 商品列表 ============= */
+.goods-list {
+  height: calc(100vh - 120rpx);
+}
+
+.goods-card {
+  display: flex;
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.05);
+}
+
+.goods-image {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 16rpx;
+  margin-right: 30rpx;
+  flex-shrink: 0;
+}
+
+.goods-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.goods-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+.goods-price {
+  font-size: 36rpx;
+  color: #e64340;
+  font-weight: bold;
+  margin: 10rpx 0;
+}
+
+/* ============= 状态标签 ============= */
+.status-tag {
+  display: inline-block;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: bold;
+}
+
+.status-on {
+  background-color: #e6f7ff;
+  color: #1890ff;
+  border: 1rpx solid #91d5ff;
+}
+
+.status-off {
+  background-color: #fffbe6;
+  color: #fa8c16;
+  border: 1rpx solid #ffe58f;
+}
+
+/* ============= 操作菜单 ============= */
+.action-menu {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  gap: 16rpx;
+}
+
+.action-btn {
+  padding: 16rpx 0;
+  font-size: 26rpx;
+  border-radius: 12rpx;
+  text-align: center;
+}
+
+.edit-btn {
+  background-color: #e6f4ff;
+  color: #1890ff;
+  border: 1rpx solid #91d5ff;
+}
+
+.on-btn {
+  background-color: #f6ffed;
+  color: #52c41a;
+  border: 1rpx solid #b7eb8f;
+}
+
+.off-btn {
+  background-color: #fffbe6;
+  color: #fa8c16;
+  border: 1rpx solid #ffe58f;
+}
+
+.delete-btn {
+  background-color: #fff1f0;
+  color: #ff4d4f;
+  border: 1rpx solid #ffa39e;
+}

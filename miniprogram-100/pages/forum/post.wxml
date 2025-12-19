@@ -1,0 +1,40 @@
+<!-- 提示信息 -->
+<view class="tips">
+  <text>发布后下滑刷新就可以看到最新帖子。每个帖子都仅保留90天后自动删除。删除发布的帖子请在个人页面中的‘我的帖子’里面进行删除。</text>
+</view>
+
+<!-- 顶部导航栏 -->
+<view class="bar">
+  <text class="title">发表新话题</text>
+  <button size="mini" type="primary" bindtap="submit">发布</button>
+</view>
+
+<!-- 表单 -->
+<view class="form">
+  <input 
+    placeholder="请输入标题" 
+    value="{{title}}" 
+    bindinput="onTitleInput" 
+    maxlength="50"
+  />
+  <textarea 
+    placeholder="请输入正文" 
+    value="{{content}}" 
+    bindinput="onContentInput" 
+    auto-height 
+    maxlength="1000"
+  />
+  <view class="char-count">正文：{{content.length}}/1000</view>
+</view>
+
+<!-- 上传图片 -->
+<view class="imgs">
+  <text class="imgs-title">添加图片（可选）</text>
+  <view class="imgs-grid">
+    <view class="img-box" wx:for="{{imgs}}" wx:key="*this">
+      <image src="{{item}}" mode="aspectFill" />
+      <icon type="clear" size="20" data-index="{{index}}" bindtap="removeImg" />
+    </view>
+    <view class="add-btn" bindtap="chooseImg" wx:if="{{imgs.length < 9}}">+</view>
+  </view>
+</view>

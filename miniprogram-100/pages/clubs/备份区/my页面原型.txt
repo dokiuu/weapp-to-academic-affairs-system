@@ -1,0 +1,49 @@
+
+<div style="display: flex;margin-top: 150rpx;" ></div>
+<view class="wrap">
+  <block wx:if="{{!hasLogin}}">
+    <input placeholder="请输入学号" model:value="{{stuId}}" />
+    <input password placeholder="请输入密码" model:value="{{pwd}}" />
+    <button bindtap="save">登录并保存</button>
+  </block>
+
+  <block wx:else>
+    <text>你好，{{userName}}（{{stuId}}）</text>
+  </block>
+</view>
+
+<button bindtap="seeMyPosts" style="margin-top:20rpx">查看我发过的帖子</button>
+<button bindtap="goMyDetail">修改个人信息</button>
+<button >用户协议</button>
+
+
+
+--------------------------------------------------------
+
+.wrap { padding: 40rpx; }
+input { border: 1px solid #ccc; margin: 20rpx 0; padding: 20rpx; border-radius: 8rpx; }
+button { margin-top: 40rpx; }
+
+.container {
+  padding: 20rpx;
+}
+
+.avatar-section, .nickname-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-left: 20rpx;
+}
+
+.nickname-input {
+  flex: 1;
+  padding: 10rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 8rpx;
+}

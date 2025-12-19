@@ -1,0 +1,223 @@
+
+
+<div  class="calendar" style="display: flex;margin-top: 150rpx;" ></div>
+<view class="container">
+  <!-- 顶部周选择器 -->
+  <scroll-view class="week-selector" scroll-x>
+    <view wx:for="{{weeks}}" wx:key="index" 
+          class="week-item {{currentWeek === index ? 'active' : ''}}"
+          bindtap="switchWeek" data-week="{{index}}">
+      第{{item}}周
+    </view>
+  </scroll-view>
+
+  <!-- 课程表 -->
+  <scroll-view class="schedule-scroll" scroll-y>
+    <view class="schedule-container" wx:if="{{!isEmpty}}">
+      <!-- 表头 -->
+      <view class="schedule-header">
+        <view class="time-header">时间</view>
+        <view wx:for="{{weekDays}}" wx:key="index" class="day-header">
+          {{item}}
+        </view>
+      </view>
+
+      <!-- 课程内容 -->
+      <view class="schedule-body">
+        <!-- 时间轴 -->
+        <view class="time-column">
+          <view wx:for="{{classTimes}}" wx:key="index" class="time-slot">
+            {{item}}
+          </view>
+        </view>
+
+        <!-- 课程表格 -->
+        <view class="classes-column">
+          <view wx:for="{{scheduleData}}" wx:for-item="day" wx:for-index="dayIndex" wx:key="dayIndex" class="day-column">
+            <view wx:for="{{day.classes}}" wx:for-item="class" wx:for-index="timeIndex" wx:key="timeIndex" 
+                  class="class-slot {{class.course ? 'has-class' : ''}}"
+                  data-day="{{dayIndex}}" data-time="{{timeIndex}}" bindtap="showClassDetail">
+              <text class="course-name" wx:if="{{class.course}}">{{class.course}}</text>
+              <text class="class-room" wx:if="{{class.course}}">{{class.room}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 空状态提示 -->
+  <view wx:if="{{isEmpty}}" class="empty-tip">
+    <image src="/images/empty.png" class="empty-img"></image>
+    <text>当前学期暂无排课</text>
+  </view>
+
+  <!-- 课程详情弹窗 -->
+  <view class="modal" wx:if="{{showModal}}" catchtap="hideModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text>课程详情</text>
+        <text class="close-btn" catchtap="hideModal">×</text>
+      </view>
+      <view class="modal-body">
+        <view class="detail-item">
+          <text class="label">课程：</text>
+          <text class="value">{{currentClass.course}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">教师：</text>
+          <text class="value">{{currentClass.teacher}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">教室：</text>
+          <text class="value">{{currentClass.room}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">周次：</text>
+          <text class="value">{{currentClass.weeks}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">时间：</text>
+          <text class="value">{{currentClass.time}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+and
+
+
+
+
+
+// pages/curriculum/curriculum.js
+// pages/schedule/schedule.js
+Page({
+  data: {
+    weeks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    currentWeek: 0,
+    weekDays: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+    classTimes: ['第一大节', '第二大节', '第三大节', '第四大节', '第五大节','第六大节'],
+    scheduleData: [],
+    isEmpty: false,
+    showModal: false,
+    currentClass: {}
+  },
+
+  onLoad() {
+    this.loadScheduleData();
+  },
+
+  // 加载课表数据
+  loadScheduleData() {
+    const app = getApp();
+    const { stuId, pwd } = app.globalData;
+    
+    if (!stuId || !pwd) {
+      wx.switchTab({ url: '/pages/my/my' });
+      return;
+    }
+
+    wx.showLoading({ title: '加载中' });
+    
+    wx.cloud.callFunction({
+      name: 'classtable',
+      data: { stuId, pwd }
+    }).then(res => {
+      wx.hideLoading();
+      const result = res.result || res;
+      
+      if (result && result.code === 0) {
+        this.processScheduleData(result.data || []);
+        this.setData({ isEmpty: false });
+      } else {
+        this.setData({ 
+          scheduleData: [], 
+          isEmpty: true 
+        });
+      }
+    }).catch(err => {
+      wx.hideLoading();
+      console.error(err);
+      this.setData({ 
+        scheduleData: [], 
+        isEmpty: true 
+      });
+    });
+  },
+
+  // 处理课表数据
+  processScheduleData(kb) {
+    // 初始化空课表结构
+    const scheduleData = [];
+    for (let i = 0; i < 7; i++) {
+      const day = {
+        day: this.data.weekDays[i],
+        classes: []
+      };
+      for (let j = 0; j < 5; j++) {
+        day.classes.push({});
+      }
+      scheduleData.push(day);
+    }
+
+    // 填充课程数据
+    kb.forEach(item => {
+      // 根据day字段确定星期几
+      const dayIndex = parseInt(item.day) || 0;
+      
+      // 根据time字段确定时间段
+      let timeIndex = 0;
+      if (item.time.includes('第一大节')) timeIndex = 0;
+      else if (item.time.includes('第二大节')) timeIndex = 1;
+      else if (item.time.includes('第三大节')) timeIndex = 2;
+      else if (item.time.includes('第四大节')) timeIndex = 3;
+      else if (item.time.includes('第五大节')) timeIndex = 4;
+      
+      // 将课程放入对应位置
+      if (dayIndex < 7 && timeIndex < 5) {
+        scheduleData[dayIndex].classes[timeIndex] = {
+          course: item.course,
+          teacher: item.teacher,
+          room: item.room,
+          weeks: item.weeks,
+          time: item.time
+        };
+      }
+    });
+
+    this.setData({ scheduleData });
+  },
+
+  // 切换周次
+  switchWeek(e) {
+    const week = e.currentTarget.dataset.week;
+    this.setData({ currentWeek: week });
+    // 这里可以根据周次筛选课程
+  },
+
+  // 显示课程详情
+  showClassDetail(e) {
+    const { day, time } = e.currentTarget.dataset;
+    const classInfo = this.data.scheduleData[day].classes[time];
+    
+    if (classInfo && classInfo.course) {
+      this.setData({
+        currentClass: classInfo,
+        showModal: true
+      });
+    }
+  },
+
+  // 隐藏弹窗
+  hideModal() {
+    this.setData({ showModal: false });
+  },
+
+  // 阻止事件冒泡
+  stopPropagation() {}
+});

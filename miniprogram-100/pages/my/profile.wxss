@@ -1,0 +1,107 @@
+/* pages/my/profile.wxss */
+
+page {
+  background-color: #f0f8ff;
+}
+
+/* 标题栏样式 - 匹配forum首页 */
+.page-header {
+  background: linear-gradient(135deg, #1890ff 0%, #5cc4fc 100%);
+  height: 80rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20rpx 25rpx;
+  box-shadow: 0 8rpx 24rpx rgba(24, 144, 255, 0.2);
+}
+
+.header-title {
+  color: white;
+  font-size: 34rpx;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+}
+
+.container {
+  padding: 20rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin: 20rpx 25rpx;
+  box-shadow: 0 8rpx 24rpx rgba(24, 144, 255, 0.1);
+}
+
+.signature {
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 16rpx;
+  max-width: 80%;
+  text-align: center;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.nickName {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.post-list {
+  margin-top: 20rpx;
+}
+
+.post-item {
+  background-color: #fff;
+  padding: 30rpx;
+  border-radius: 20rpx;
+  margin: 0 25rpx 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(24, 144, 255, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.post-item:active {
+  transform: scale(1.02);
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.content {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.empty-tips {
+  text-align: center;
+  font-size: 32rpx;
+  color: #999;
+  margin-top: 200rpx;
+}

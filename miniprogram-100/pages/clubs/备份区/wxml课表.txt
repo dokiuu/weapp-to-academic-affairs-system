@@ -1,0 +1,12 @@
+<view class="kb">
+  <block wx:for="{{kb}}" wx:key="index">
+    <view class="item">
+      <text>{{item.course}}</text>
+      <text>{{item.teacher}} · {{item.room}}</text>
+      <text>{{item.weeks}} · {{item.time}}</text>
+    </view>
+  </block>
+</view>
+<view wx:if="{{kb.length === 0}}" style="padding:40rpx;text-align:center;color:#999;">
+  当前学期暂无排课
+</view>

@@ -1,0 +1,86 @@
+{
+  "pages": [
+    "pages/index/index",
+      "pages/curriculum/curriculum",
+      "pages/forum/forum",
+      "pages/forum/detail",
+      "pages/forum/post",
+      "pages/secondhand/secondhand",
+      "pages/secondhand/detail",
+      "pages/secondhand/publish",
+      "pages/my/my",
+      "pages/my/mydetail",
+      "pages/my/contact/contact",
+      "pages/my/agreement/agreement",
+      "pages/my/mypublish",
+      "pages/my/profile",
+      "pages/myPosts/myPosts",
+      "pages/powerweb/powerweb",
+      "pages/clubs/clubs",
+      "pages/clubDetail/clubDetail",
+      "pages/clubManage/clubManage",
+      "pages/bannerManage/bannerManage"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "selectedColor": "#00000",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "image/首页.png",
+        "selectedIconPath": "image/首页ing.png"
+      },
+      {
+        "pagePath": "pages/curriculum/curriculum",
+        "text": "课表",
+        "iconPath": "image/课表.png",
+        "selectedIconPath": "image/课表ing.png"
+      },
+      {
+        "pagePath": "pages/forum/forum",
+        "text": "论坛",
+        "iconPath": "image/论坛.png",
+        "selectedIconPath": "image/论坛ing.png"
+      },
+      {
+        "pagePath": "pages/secondhand/secondhand",
+        "text": "二手",
+        "iconPath": "image/二手.png",
+        "selectedIconPath": "image/二手ing.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "image/我的.png",
+        "selectedIconPath": "image/我的ing.png"
+      }
+    ]
+  },
+  "renderer": "skyline",
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true,
+      "tagNameStyleIsolation": "legacy",
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-search": "@vant/weapp/search/index"
+  },
+  "requiredBackgroundModes": [
+    "fetch"
+  ]
+}

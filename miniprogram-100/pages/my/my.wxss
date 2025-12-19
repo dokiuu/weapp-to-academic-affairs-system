@@ -1,0 +1,349 @@
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding: 140rpx 330rpx;
+}
+
+/* 顶部背景 */
+.top-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 350rpx;
+  background: linear-gradient(135deg, #0bceff 0%, #2575fc 100%);
+  border-bottom-left-radius: 40rpx;
+  border-bottom-right-radius: 40rpx;
+  z-index: 0;
+}
+
+/* 卡片通用样式 */
+.user-card, .login-card, .menu-card {
+  position: relative;
+  background: white;
+  border-radius: 20rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.08);
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.user-card {
+  padding: 40rpx 30rpx;
+  margin-top: 40rpx;
+}
+
+.login-card {
+  padding: 40rpx 30rpx;
+  margin-top: 40rpx;
+}
+
+.menu-card {
+  padding: 0;
+}
+
+.menu-list {
+  max-height: 700rpx;
+  overflow-y: auto;
+  padding-bottom: 5rpx;
+}
+
+.menu-list::-webkit-scrollbar {
+  width: 6rpx;
+}
+
+.menu-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10rpx;
+}
+
+.menu-list::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10rpx;
+}
+
+.menu-list::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  padding: 25rpx 30rpx 15rpx;
+  color: #2c3e50;
+  border-bottom: 1rpx solid #f1f3f6;
+}
+
+/* 用户信息样式 */
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-container {
+  position: relative;
+  margin-right: 30rpx;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  display: block;
+  z-index: 2;
+  position: relative;
+}
+
+.avatar-border {
+  position: absolute;
+  top: -6rpx;
+  left: -6rpx;
+  right: -6rpx;
+  bottom: -6rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  z-index: 1;
+}
+
+.info {
+  flex: 1;
+}
+
+.user-name {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  color: #2c3e50;
+}
+
+.stu-id {
+  display: block;
+  color: #7f8c8d;
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+}
+
+.login-time {
+  display: flex;
+  align-items: center;
+  color: #95a5a6;
+  font-size: 24rpx;
+}
+
+.login-time .iconfont {
+  margin-right: 10rpx;
+  font-size: 24rpx;
+}
+
+/* ================= 优化后的登录表单样式 ================= */
+.login-form {
+  width: 100%;
+  padding-top: 10rpx;
+}
+
+.input-container {
+  margin-bottom: 40rpx;
+}
+
+.input-label {
+  display: block;
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 16rpx;
+  font-weight: 500;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 96rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  border: 2rpx solid #e9ecef;
+  padding: 0 24rpx;
+  transition: all 0.3s;
+}
+
+.input-wrapper:focus-within {
+  border-color: #4277ff;
+  background: #fff;
+  box-shadow: 0 0 0 4rpx rgba(66, 119, 255, 0.1);
+}
+
+.input-wrapper .iconfont {
+  font-size: 36rpx;
+  margin-right: 16rpx;
+  color: #909399;
+}
+
+.input {
+  flex: 1;
+  height: 100%;
+  font-size: 32rpx;
+  color: #333;
+  padding: 0;
+}
+
+.input::placeholder {
+  color: #c0c4cc;
+}
+
+.placeholder {
+  color: #c0c4cc;
+  font-size: 32rpx;
+}
+
+.toggle-password {
+  padding: 16rpx;
+  margin-left: 16rpx;
+  color: #909399;
+  font-size: 36rpx;
+}
+
+.error-msg {
+  display: block;
+  font-size: 24rpx;
+  color: #ff4d4f;
+  margin-top: 12rpx;
+}
+
+.login-btn {
+  width: 100%;
+  height: 96rpx;
+  line-height: 96rpx;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  border-radius: 12rpx;
+  font-size: 34rpx;
+  font-weight: 500;
+  margin: 20rpx 0;
+  border: none;
+  box-shadow: 0 6rpx 20rpx rgba(37, 117, 252, 0.3);
+  transition: all 0.3s;
+}
+
+.login-btn.btn-hover {
+  background: #3b6ae1;
+  transform: translateY(2rpx);
+}
+
+.login-tips {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: #7f8c8d;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.agreement-link {
+  color: #6a11cb;
+  text-decoration: underline;
+  font-size: 24rpx;
+}
+
+/* 菜单列表样式 */
+.menu-list {
+  padding: 0 30rpx;
+}
+
+.menu-item {
+  padding: 30rpx 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #f1f3f6;
+  transition: background-color 0.3s;
+}
+
+.menu-item:active {
+  background-color: #f8f9fa;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-left .iconfont {
+  margin-right: 20rpx;
+  font-size: 36rpx;
+  width: 40rpx;
+  text-align: center;
+}
+
+.icon-profile {
+  color: #3498db;
+}
+
+.icon-post {
+  color: #9b59b6;
+}
+
+.icon-logout {
+  color: #e74c3c;
+}
+
+.arrow {
+  color: #bdc3c7;
+  font-size: 32rpx;
+}
+
+.logout-btn {
+  color: #e74c3c;
+}
+
+/* 装饰元素 */
+.card-decoration {
+  position: absolute;
+  top: -40rpx;
+  right: -40rpx;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(106, 17, 203, 0.1) 0%, rgba(37, 117, 252, 0.1) 100%);
+  z-index: 0;
+}
+
+.bottom-decoration {
+  position: absolute;
+  bottom: -100rpx;
+  left: -100rpx;
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(106, 17, 203, 0.05) 0%, rgba(37, 117, 252, 0.05) 100%);
+  z-index: 0;
+}
+
+/* 未读消息红点 */
+.unread-badge {
+  background: #f44;
+  color: white;
+  font-size: 24rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+  margin-right: 10rpx;
+  min-width: 32rpx;
+  text-align: center;
+}
+
+.unread-badge text {
+  line-height: 1;
+}

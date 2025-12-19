@@ -1,0 +1,66 @@
+<view class="clubs-container">
+  <!-- 顶部标题栏 -->
+  <view class="header">
+    <view class="header-content">
+      <view class="title-section">
+        <text class="title">学生社团</text>
+        <text class="subtitle">探索丰富多彩的社团生活</text>
+      </view>
+      <!-- <button class="manage-btn" bindtap="goToManage">管理</button> -->
+    </view>
+  </view>
+
+  <!-- 主要内容区域 - 添加scroll-view以实现滚动 -->
+  <scroll-view class="main-content" scroll-y="{{true}}" bindscroll="onPageScroll" id="mainScrollView">
+    <!-- 加载状态 -->
+    <view class="loading" wx:if="{{loading}}">
+      <image class="loading-icon" src="/images/loading.gif" mode="aspectFit"></image>
+      <text>社团加载中...</text>
+    </view>
+
+    <!-- 错误状态 -->
+    <view class="error" wx:if="{{error}}">
+      <image class="error-icon" src="/images/error.png" mode="aspectFit"></image>
+      <text class="error-text">加载失败，请重试</text>
+      <button class="retry-btn" bindtap="loadClubs">重新加载</button>
+    </view>
+
+    <!-- 瀑布流布局 -->
+    <view class="waterfall-container" wx:if="{{!loading && !error}}">
+      <!-- 左列 -->
+      <view class="waterfall-column">
+        <view wx:for="{{leftColumnClubs}}" wx:key="_id" class="club-item" bindtap="goClubDetail" data-id="{{item._id}}">
+          <image class="club-poster" src="{{item.poster}}" mode="aspectFill" />
+          <view class="club-info">
+            <text class="club-name">{{item.name}}</text>
+            <text class="club-desc" wx:if="{{item.description}}">{{item.description}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 右列 -->
+      <view class="waterfall-column">
+        <view wx:for="{{rightColumnClubs}}" wx:key="_id" class="club-item" bindtap="goClubDetail" data-id="{{item._id}}">
+          <image class="club-poster" src="{{item.poster}}" mode="aspectFill" />
+          <view class="club-info">
+            <text class="club-name">{{item.name}}</text>
+            <text class="club-desc" wx:if="{{item.description}}">{{item.description}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty" wx:if="{{!loading && !error && clubs.length === 0}}">
+      <image class="empty-icon" src="/images/empty.png" mode="aspectFit"></image>
+      <text class="empty-text">暂无社团数据</text>
+      <text class="empty-tip">点击管理按钮添加第一个社团</text>
+      <button class="add-first-btn" bindtap="goToManage">添加社团</button>
+    </view>
+  </scroll-view>
+
+  <!-- 回到顶部按钮 -->
+  <view class="back-to-top" wx:if="{{showBackTop}}" bindtap="scrollToTop">
+    <text>↑</text>
+  </view>
+</view>

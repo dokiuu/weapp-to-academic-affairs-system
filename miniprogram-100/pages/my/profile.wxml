@@ -1,0 +1,44 @@
+<!-- pages/my/profile.wxml -->
+<view class="container">
+  <scroll-view
+  scroll-y
+  class="list"
+  refresher-enabled
+  refresher-triggered="{{triggered}}"
+  bindrefresherrefresh="onRefresh"
+  bindscrolltolower="loadMore"
+  style="height: 100vh;"
+>
+  <!-- 标题栏 -->
+  <view class="page-header">
+    <text class="header-title">个人资料</text>
+  </view>
+  <!-- 用户信息 -->
+  <view class="user-info">
+    <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+    <text class="nickName">{{userInfo.nickName}}</text>
+    <text class="signature">{{userInfo.signature || '未设置个性签名'}}</text>
+  </view>
+
+  <!-- 帖子列表 -->
+  <view class="post-list">
+    <block wx:for="{{posts}}" wx:key="_id">
+      <navigator url="/pages/forum/detail?id={{item._id}}" hover-class="none">
+        <view class="post-item">
+          <text class="title">{{item.title}}</text>
+          <text class="content">{{item.content}}</text>
+          <view class="meta">
+            <text>发布时间：{{formatTime(item.createTime)}}</text>
+            <text>评论数：{{item.commentCount}}</text>
+            <text>点赞数：{{item.likeCount}}</text>
+          </view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+
+  <!-- 空状态提示 -->
+  <view wx:if="{{posts.length === 0}}" class="empty-tips">该用户暂无发布帖子</view>
+  
+  </scroll-view>
+</view>
