@@ -4,8 +4,8 @@ const cheerio = require('cheerio')
 
 cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV })
 
-const LOGIN_URL = 'https://www.hltz.net/hlxy_jsxsd/xk/LoginToXk'
-const KB_URL = 'https://www.hltz.net/hlxy_jsxsd/xskb/xskb_list.do'
+const LOGIN_URL = ''//自己学校教务系统的地址湖南强智教务系统的网址
+const KB_URL = '存放课程表的地址'
 
 const http = axios.create({
   timeout: 15000,

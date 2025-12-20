@@ -301,7 +301,7 @@ Page({
   // 跳转到健身房预约小程序
   navigateToGym() {
     wx.navigateToMiniProgram({
-      appId: 'wxd9bdce38aa47ea6b',
+      appId: '',//可以自由填写，下文相同，可以在想要跳转的目标小程序找到appid
       path: '',
       success(res) {
         console.log('打开健身房预约成功');
@@ -319,7 +319,7 @@ Page({
   // 跳转到外卖小程序
   navigateToTakeout() {
     wx.navigateToMiniProgram({
-      appId: 'wxf9bdcdec193477c0',
+      appId: '',
       path: '',
       success(res) {
         console.log('打开外卖服务成功');
@@ -337,7 +337,7 @@ Page({
   // 跳转到打印小程序
   navigateToPrint() {
     wx.navigateToMiniProgram({
-      appId: 'wxa991d711f60aa1e5',
+      appId: '',
       path: '',
       success(res) {
         console.log('打开打印服务成功');
@@ -355,7 +355,7 @@ Page({
   // 跳转到大巴车小程序
   navigateToTakeBus() {
     wx.navigateToMiniProgram({
-      appId: 'wx7fbb025b72805090',
+      appId: '',
       path: '',
       success(res) {
         console.log('打开大巴车服务成功');
@@ -373,7 +373,7 @@ Page({
   // 跳转到通行码小程序
   navigateToPass() {
     wx.navigateToMiniProgram({
-      appId: 'wxeacb1c681d9c9f7f',
+      appId: '',
       path: '',
       success(res) {
         console.log('打开通行码服务成功');
@@ -413,7 +413,7 @@ Page({
   onShareTimeline() {
     return {
       title: '校园一站式服务',
-      imageUrl: '/images/share.jpg'
+      imageUrl: ''
     }
   }
 })

@@ -13,7 +13,7 @@ App({
   onLaunch: function () {
     // 初始化云环境
     wx.cloud.init({
-      env: 'gzhl-1gx40yvz927ef35e',
+      env: '',//可以在云开发处找到
       traceUser: true
     });
 
